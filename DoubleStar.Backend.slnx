@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/buildingblocks/">
+    <Project Path="src/buildingblocks/doublestar.buildingblocks.application/doublestar.buildingblocks.application.csproj" />
+    <Project Path="src/buildingblocks/doublestar.buildingblocks.infrastructure/doublestar.buildingblocks.infrastructure.csproj" />
+    <Project Path="src/buildingblocks/doublestar.sharedkernel/doublestar.sharedkernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Host/">
+    <Project Path="src/Host/DoubleStar.API/DoubleStar.API.csproj" />
+  </Folder>
+  <Folder Name="/src/modules/" />
+  <Folder Name="/src/modules/Catalog/">
+    <Project Path="src/Modules/Catalog/DoubleStar.Modules.Catalog/DoubleStar.Modules.Catalog.csproj" />
+  </Folder>
+  <Folder Name="/src/modules/Customers/">
+    <Project Path="src/Modules/Customers/DoubleStar.Modules.Customers/DoubleStar.Modules.Customers.csproj" />
+  </Folder>
+  <Folder Name="/src/modules/identity/">
+    <Project Path="src/modules/identity/doublestar.modules.identity/doublestar.modules.identity.csproj" />
+  </Folder>
+  <Folder Name="/src/modules/Inventory/">
+    <Project Path="src/Modules/Inventory/DoubleStar.Modules.Inventory/DoubleStar.Modules.Inventory.csproj" />
+  </Folder>
+</Solution>

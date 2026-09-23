@@ -1,0 +1,14 @@
+﻿<!-- DoubleStar.Modules.Catalog.csproj -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.SharedKernel\DoubleStar.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Application\DoubleStar.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Infrastructure\DoubleStar.BuildingBlocks.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

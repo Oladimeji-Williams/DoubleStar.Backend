@@ -1,0 +1,21 @@
+﻿<!-- DoubleStar.Modules.Identity.csproj -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.SharedKernel\DoubleStar.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Application\DoubleStar.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Infrastructure\DoubleStar.BuildingBlocks.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

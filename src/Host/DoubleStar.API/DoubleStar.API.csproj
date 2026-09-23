@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <PackageReference Include="DotNetEnv" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\DoubleStar.SharedKernel\DoubleStar.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Application\DoubleStar.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DoubleStar.BuildingBlocks.Infrastructure\DoubleStar.BuildingBlocks.Infrastructure.csproj" />
+
+    <ProjectReference Include="..\..\Modules\Identity\DoubleStar.Modules.Identity\DoubleStar.Modules.Identity.csproj" />
+    <ProjectReference Include="..\..\Modules\Customers\DoubleStar.Modules.Customers\DoubleStar.Modules.Customers.csproj" />
+    <ProjectReference Include="..\..\Modules\Catalog\DoubleStar.Modules.Catalog\DoubleStar.Modules.Catalog.csproj" />
+    <ProjectReference Include="..\..\Modules\Inventory\DoubleStar.Modules.Inventory\DoubleStar.Modules.Inventory.csproj" />
+  </ItemGroup>
+
+</Project>
