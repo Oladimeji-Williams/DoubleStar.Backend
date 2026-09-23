@@ -9,6 +9,8 @@ using DoubleStar.Modules.Identity.Infrastructure.Identity;
 using DoubleStar.Modules.Customers;
 using DoubleStar.Modules.Catalog;
 using DoubleStar.Modules.Inventory;
+using DoubleStar.Modules.Sales;
+
 
 
 LoadDotEnv();
@@ -21,6 +23,7 @@ var moduleAssemblies = new[]
     typeof(DoubleStar.Modules.Customers.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Catalog.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Inventory.AssemblyMarker).Assembly,
+    typeof(DoubleStar.Modules.Sales.AssemblyMarker).Assembly,
 
     // more modules get appended here as we build them: Customers, Catalog, ...
 };
@@ -32,6 +35,7 @@ builder.Services.AddIdentityModule(builder.Configuration);
 builder.Services.AddCustomersModule(builder.Configuration);
 builder.Services.AddCatalogModule(builder.Configuration);
 builder.Services.AddInventoryModule(builder.Configuration);
+builder.Services.AddSalesModule(builder.Configuration);
 
 builder.Services.Configure<FrontendOptions>(builder.Configuration.GetSection(FrontendOptions.SectionName));
 
