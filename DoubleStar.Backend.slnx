@@ -21,6 +21,9 @@
   <Folder Name="/src/modules/Inventory/">
     <Project Path="src/Modules/Inventory/DoubleStar.Modules.Inventory/DoubleStar.Modules.Inventory.csproj" />
   </Folder>
+  <Folder Name="/src/modules/Payments/">
+    <Project Path="src/Modules/Payments/DoubleStar.Modules.Payments/DoubleStar.Modules.Payments.csproj" />
+  </Folder>
   <Folder Name="/src/modules/Repairs/">
     <Project Path="src/Modules/Repairs/DoubleStar.Modules.Repairs/DoubleStar.Modules.Repairs.csproj" />
   </Folder>
