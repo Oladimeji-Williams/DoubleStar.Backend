@@ -28,6 +28,7 @@ var moduleAssemblies = new[]
     typeof(DoubleStar.Modules.Repairs.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Payments.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Notifications.AssemblyMarker).Assembly,
+    typeof(DoubleStar.Modules.Reporting.AssemblyMarker).Assembly,
 
     // more modules get appended here as we build them: Customers, Catalog, ...
 };

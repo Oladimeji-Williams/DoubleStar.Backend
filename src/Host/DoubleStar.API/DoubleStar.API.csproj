@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\Modules\Repairs\DoubleStar.Modules.Repairs\DoubleStar.Modules.Repairs.csproj" />
     <ProjectReference Include="..\..\Modules\Payments\DoubleStar.Modules.Payments\DoubleStar.Modules.Payments.csproj" />
     <ProjectReference Include="..\..\Modules\Notifications\DoubleStar.Modules.Notifications\DoubleStar.Modules.Notifications.csproj" />
+    <ProjectReference Include="..\..\Modules\Reporting\DoubleStar.Modules.Reporting\DoubleStar.Modules.Reporting.csproj" />
   </ItemGroup>
 
 </Project>

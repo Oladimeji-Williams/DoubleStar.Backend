@@ -26,4 +26,6 @@ public sealed class StockItemRepository(InventoryDbContext dbContext) : IStockIt
         dbContext.StockItems.Update(stockItem);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
+    public async Task<IReadOnlyList<StockItem>> GetAllAsync(CancellationToken cancellationToken = default) =>
+        await dbContext.StockItems.ToListAsync(cancellationToken);
 }

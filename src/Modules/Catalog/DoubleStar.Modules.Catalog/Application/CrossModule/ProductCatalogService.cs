@@ -19,4 +19,10 @@ public sealed class ProductCatalogService(IProductRepository productRepository) 
         var products = await productRepository.GetByIdsAsync(productIds, cancellationToken);
         return products.Select(p => p.ToSummaryDto()).ToList();
     }
+
+    public async Task<IReadOnlyList<ProductSummaryDto>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        var products = await productRepository.GetAllAsync(cancellationToken);
+        return products.Select(p => p.ToSummaryDto()).ToList();
+    }
 }

@@ -19,4 +19,10 @@ public sealed class StockLevelReaderService(
         var unit = await serializedUnitRepository.GetBySerialAsync(serialNumber, cancellationToken);
         return unit is null ? null : new SerializedUnitDto(unit.Id, unit.ProductId, unit.SerialNumber, unit.Status.ToString());
     }
+
+    public async Task<IReadOnlyList<StockLevelDto>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        var stockItems = await stockItemRepository.GetAllAsync(cancellationToken);
+        return stockItems.Select(s => new StockLevelDto(s.ProductId, s.QuantityAvailable, s.QuantityReserved)).ToList();
+    }
 }

@@ -9,4 +9,5 @@ public interface IStockItemRepository
     Task<IReadOnlyList<StockItem>> GetLowStockAsync(int threshold, CancellationToken cancellationToken = default);
     Task AddAsync(StockItem stockItem, CancellationToken cancellationToken = default);
     Task UpdateAsync(StockItem stockItem, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<StockItem>> GetAllAsync(CancellationToken cancellationToken = default);
 }
