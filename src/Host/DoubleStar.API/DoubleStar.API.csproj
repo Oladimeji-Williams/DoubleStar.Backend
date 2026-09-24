@@ -19,6 +19,7 @@
     <ProjectReference Include="..\..\Modules\Sales\DoubleStar.Modules.Sales\DoubleStar.Modules.Sales.csproj" />
     <ProjectReference Include="..\..\Modules\Repairs\DoubleStar.Modules.Repairs\DoubleStar.Modules.Repairs.csproj" />
     <ProjectReference Include="..\..\Modules\Payments\DoubleStar.Modules.Payments\DoubleStar.Modules.Payments.csproj" />
+    <ProjectReference Include="..\..\Modules\Notifications\DoubleStar.Modules.Notifications\DoubleStar.Modules.Notifications.csproj" />
   </ItemGroup>
 
 </Project>
