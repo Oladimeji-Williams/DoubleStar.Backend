@@ -14,7 +14,13 @@ using DoubleStar.Modules.Repairs;
 using DoubleStar.Modules.Payments;
 using DoubleStar.Modules.Notifications;
 
-LoadDotEnv();
+if (!string.Equals(
+    Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
+    "Testing",
+    StringComparison.OrdinalIgnoreCase))
+{
+    LoadDotEnv();
+}
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,7 +68,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseSecurityHeaders();
 app.UseApiCors();
-app.UseRateLimiter();
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    app.UseRateLimiter();
+}
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

@@ -1,0 +1,27 @@
+﻿<!-- DoubleStar.DatabaseSeeder.csproj -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetEnv" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BuildingBlocks\DoubleStar.BuildingBlocks.Infrastructure\DoubleStar.BuildingBlocks.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Identity\DoubleStar.Modules.Identity\DoubleStar.Modules.Identity.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Customers\DoubleStar.Modules.Customers\DoubleStar.Modules.Customers.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Catalog\DoubleStar.Modules.Catalog\DoubleStar.Modules.Catalog.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Inventory\DoubleStar.Modules.Inventory\DoubleStar.Modules.Inventory.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Sales\DoubleStar.Modules.Sales\DoubleStar.Modules.Sales.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Repairs\DoubleStar.Modules.Repairs\DoubleStar.Modules.Repairs.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Payments\DoubleStar.Modules.Payments\DoubleStar.Modules.Payments.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Notifications\DoubleStar.Modules.Notifications\DoubleStar.Modules.Notifications.csproj" />
+  </ItemGroup>
+
+</Project>
