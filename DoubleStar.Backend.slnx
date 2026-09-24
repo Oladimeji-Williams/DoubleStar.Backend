@@ -36,4 +36,21 @@
   <Folder Name="/src/modules/Sales/">
     <Project Path="src/Modules/Sales/DoubleStar.Modules.Sales/DoubleStar.Modules.Sales.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DoubleStar.Api.IntegrationTests/DoubleStar.Api.IntegrationTests.csproj" />
+    <Project Path="tests/DoubleStar.ArchitectureTests/DoubleStar.ArchitectureTests.csproj" />
+  </Folder>
+  <Folder Name="/tests/Modules/">
+    <Project Path="tests/Modules/DoubleStar.Modules.Catalog.Tests/DoubleStar.Modules.Catalog.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Customers.Tests/DoubleStar.Modules.Customers.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Identity.Tests/DoubleStar.Modules.Identity.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Inventory.Tests/DoubleStar.Modules.Inventory.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Notifications.Tests/DoubleStar.Modules.Notifications.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Payments.Tests/DoubleStar.Modules.Payments.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Repairs.Tests/DoubleStar.Modules.Repairs.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Sales.Tests/DoubleStar.Modules.Sales.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/DoubleStar.DatabaseSeeder/DoubleStar.DatabaseSeeder.csproj" />
+  </Folder>
 </Solution>
