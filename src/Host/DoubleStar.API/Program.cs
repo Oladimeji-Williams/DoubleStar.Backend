@@ -12,10 +12,7 @@ using DoubleStar.Modules.Inventory;
 using DoubleStar.Modules.Sales;
 using DoubleStar.Modules.Repairs;
 using DoubleStar.Modules.Payments;
-
-
-
-
+using DoubleStar.Modules.Notifications;
 
 LoadDotEnv();
 
@@ -30,7 +27,7 @@ var moduleAssemblies = new[]
     typeof(DoubleStar.Modules.Sales.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Repairs.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Payments.AssemblyMarker).Assembly,
-
+    typeof(DoubleStar.Modules.Notifications.AssemblyMarker).Assembly,
 
     // more modules get appended here as we build them: Customers, Catalog, ...
 };
@@ -45,6 +42,7 @@ builder.Services.AddInventoryModule(builder.Configuration);
 builder.Services.AddSalesModule(builder.Configuration);
 builder.Services.AddRepairsModule(builder.Configuration);
 builder.Services.AddPaymentsModule(builder.Configuration);
+builder.Services.AddNotificationsModule(builder.Configuration);
 
 builder.Services.Configure<FrontendOptions>(builder.Configuration.GetSection(FrontendOptions.SectionName));
 
