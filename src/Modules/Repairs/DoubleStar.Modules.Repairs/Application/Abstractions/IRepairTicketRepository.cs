@@ -12,4 +12,6 @@ public interface IRepairTicketRepository
     Task<IReadOnlyList<RepairTicket>> GetByStatusAsync(RepairStatus status, CancellationToken cancellationToken = default);
     Task AddAsync(RepairTicket ticket, CancellationToken cancellationToken = default);
     Task UpdateAsync(RepairTicket ticket, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<RepairTicket>> GetCollectedInRangeAsync(
+        DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default);
 }

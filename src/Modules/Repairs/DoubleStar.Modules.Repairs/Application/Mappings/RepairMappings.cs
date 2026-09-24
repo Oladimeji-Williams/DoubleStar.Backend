@@ -15,6 +15,8 @@ public static class RepairMappings
         ticket.DiagnosisNotes, ticket.QuotedPriceKobo, ticket.TechnicianUserId, ticket.Status,
         ticket.Parts.Select(p => p.ToDto()).ToList());
 
-    public static RepairTicketSummaryDto ToSummaryDto(this RepairTicket ticket) =>
-        new(ticket.Id, ticket.CustomerId, ticket.DeviceDescription, ticket.Status, ticket.QuotedPriceKobo);
+    public static RepairTicketSummaryDto ToSummaryDto(this RepairTicket ticket) => new(
+        ticket.Id, ticket.CustomerId, ticket.DeviceDescription, ticket.Status, ticket.QuotedPriceKobo,
+        ticket.CreatedAt,
+        ticket.StatusHistory.FirstOrDefault(h => h.ToStatus == RepairStatus.Collected)?.CreatedAt);
 }

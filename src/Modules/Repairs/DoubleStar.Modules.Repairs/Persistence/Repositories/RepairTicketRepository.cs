@@ -38,4 +38,15 @@ public sealed class RepairTicketRepository(RepairsDbContext dbContext) : IRepair
         dbContext.RepairTickets.Update(ticket);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<IReadOnlyList<RepairTicket>> GetCollectedInRangeAsync(
+        DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default)
+    {
+        var ticketIds = await dbContext.RepairStatusHistory
+            .Where(h => h.ToStatus == RepairStatus.Collected && h.CreatedAt >= fromUtc && h.CreatedAt <= toUtc)
+            .Select(h => h.RepairTicketId)
+            .ToListAsync(cancellationToken);
+
+        return await WithIncludes().Where(t => ticketIds.Contains(t.Id)).ToListAsync(cancellationToken);
+    }
 }

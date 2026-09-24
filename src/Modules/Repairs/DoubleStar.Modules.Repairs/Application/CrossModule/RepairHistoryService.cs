@@ -19,4 +19,11 @@ public sealed class RepairHistoryService(IRepairTicketRepository repairTicketRep
         var ticket = await repairTicketRepository.GetByIdAsync(ticketId, cancellationToken);
         return ticket?.ToSummaryDto();
     }
+
+    public async Task<IReadOnlyList<RepairTicketSummaryDto>> GetCollectedInRangeAsync(
+        DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default)
+    {
+        var tickets = await repairTicketRepository.GetCollectedInRangeAsync(fromUtc, toUtc, cancellationToken);
+        return tickets.Select(t => t.ToSummaryDto()).ToList();
+    }
 }
