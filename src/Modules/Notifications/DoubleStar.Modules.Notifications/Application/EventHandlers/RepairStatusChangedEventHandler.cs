@@ -22,7 +22,7 @@ public sealed class RepairStatusChangedEventHandler(ICustomerDirectory customerD
             return;
         }
 
-        var (subject, html) = EmailTemplates.RepairStatusUpdate(customer.Name, notification.TicketId, notification.ToStatus);
+        var (subject, html) =  EmailTemplates.RepairStatusUpdate(customer.Name ?? "Customer", notification.TicketId, notification.ToStatus);
 
         if (!string.IsNullOrEmpty(customer.Email))
         {

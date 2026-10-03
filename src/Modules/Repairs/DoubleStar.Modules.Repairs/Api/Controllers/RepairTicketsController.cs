@@ -11,10 +11,12 @@ using DoubleStar.Modules.Repairs.Application.Commands.CancelRepairCommand;
 using DoubleStar.Modules.Repairs.Application.Commands.CollectDeviceCommand;
 using DoubleStar.Modules.Repairs.Application.Commands.MarkReadyForCollectionCommand;
 using DoubleStar.Modules.Repairs.Application.Commands.OpenRepairTicketCommand;
-using DoubleStar.Modules.Repairs.Application.Commands.RecordDiagnosisCommand;
 using DoubleStar.Modules.Repairs.Application.Queries.GetAllTicketsQuery;
 using DoubleStar.Modules.Repairs.Application.Queries.GetTicketByIdQuery;
 using DoubleStar.Modules.Repairs.Application.Queries.GetTicketsByCustomerQuery;
+using DoubleStar.Modules.Repairs.Application.Commands.StartDiagnosisCommand;
+using DoubleStar.Modules.Repairs.Application.Commands.RecordDiagnosisCommand;
+using DoubleStar.Modules.Repairs.Application.Commands.RequestRepairCommand;
 
 namespace DoubleStar.Modules.Repairs.Api.Controllers;
 
@@ -115,6 +117,22 @@ public sealed class RepairTicketsController(ISender sender, ICurrentUser current
         }
 
         var result = await sender.Send(new GetTicketsByCustomerQuery(currentUser.UserId.Value), cancellationToken);
+        return result.IsFailure ? Failure(result) : Success(result.Value);
+    }
+
+    [HttpPost("{id:int}/start-diagnosis")]
+    [Authorize(Roles = "Admin,Manager,Technician")]
+    public async Task<IActionResult> StartDiagnosis(int id, CancellationToken cancellationToken)
+    {
+        var result = await sender.Send(new StartDiagnosisCommand(id), cancellationToken);
+        return result.IsFailure ? Failure(result) : NoContent();
+    }
+
+    [HttpPost("me")]
+    [Authorize(Roles = "Customer")]
+    public async Task<IActionResult> RequestRepair(RequestRepairRequest request, CancellationToken cancellationToken)
+    {
+        var result = await sender.Send(new RequestRepairCommand(request.DeviceDescription, request.ImeiOrSerial, request.FaultDescription), cancellationToken);
         return result.IsFailure ? Failure(result) : Success(result.Value);
     }
 }

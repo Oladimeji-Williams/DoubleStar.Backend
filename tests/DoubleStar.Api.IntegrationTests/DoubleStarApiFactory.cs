@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿// tests/DoubleStar.Api.IntegrationTests/DoubleStarApiFactory.cs
+
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Testcontainers.PostgreSql;
+
+using DoubleStar.Api.IntegrationTests.Fakes;
 
 using DoubleStar.Modules.Identity.Persistence;
 using DoubleStar.Modules.Customers.Persistence;
@@ -13,6 +18,8 @@ using DoubleStar.Modules.Sales.Persistence;
 using DoubleStar.Modules.Repairs.Persistence;
 using DoubleStar.Modules.Payments.Persistence;
 using DoubleStar.Modules.Notifications.Persistence;
+
+using DoubleStar.SharedKernel.Abstractions.Notifications;
 
 namespace DoubleStar.Api.IntegrationTests;
 
@@ -77,32 +84,51 @@ public sealed class DoubleStarApiFactory
                         _postgres.GetConnectionString(),
 
                     // JWT
-                    ["Jwt:Issuer"] = "DoubleStar.Tests",
-                    ["Jwt:Audience"] = "DoubleStar.Tests",
+                    ["Jwt:Issuer"] =
+                        "DoubleStar.Tests",
+
+                    ["Jwt:Audience"] =
+                        "DoubleStar.Tests",
+
                     ["Jwt:SecretKey"] =
                         "integration-test-secret-key-needs-to-be-long-enough-for-hmac",
-                    ["Jwt:AccessTokenExpirationMinutes"] = "15",
-                    ["Jwt:RefreshTokenExpirationDays"] = "7",
+
+                    ["Jwt:AccessTokenExpirationMinutes"] =
+                        "15",
+
+                    ["Jwt:RefreshTokenExpirationDays"] =
+                        "7",
+
+                    // Test administrator
+                    ["Admin:Email"] =
+                        "admin@doublestar.local",
+
+                    ["Admin:Password"] =
+                        "ChangeMe123!",
+
+                    ["Admin:ResetPassword"] =
+                        "true",
 
                     // Frontend
                     ["Frontend:BaseUrl"] =
                         "http://localhost:4200",
 
-                    // CORS
                     ["Cors:AllowedOrigins:0"] =
                         "http://localhost:4200",
 
                     // Email
+                    // No real Resend API key is required because
+                    // IEmailSender is replaced with FakeEmailSender below.
                     ["Email:FromAddress"] =
                         "test@doublestar.local",
+
                     ["Email:FromName"] =
                         "DoubleStar Test",
-                    ["Email:ApiKey"] =
-                        "re_test_dummy",
 
                     // SMS
                     ["Sms:ApiKey"] =
                         "test_dummy",
+
                     ["Sms:SenderId"] =
                         "DoubleStar",
 
@@ -110,8 +136,28 @@ public sealed class DoubleStarApiFactory
                     ["Paystack:SecretKey"] =
                         "sk_test_dummy",
 
-                    ["AllowedHosts"] = "*"
+                    // Hosts
+                    ["AllowedHosts"] =
+                        "*"
                 });
+        });
+
+        builder.ConfigureServices(services =>
+        {
+            /*
+             * Production registers:
+             *
+             * IEmailSender -> ResendEmailSender
+             *
+             * Integration tests must never call the real Resend API.
+             *
+             * Remove the production registration and replace it with
+             * the test implementation.
+             */
+            services.RemoveAll<IEmailSender>();
+            services.RemoveAll<ISmsSender>();
+            services.AddSingleton<IEmailSender, FakeEmailSender>();
+            services.AddSingleton<ISmsSender, FakeSmsSender>();
         });
     }
 }

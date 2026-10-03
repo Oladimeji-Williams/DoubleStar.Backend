@@ -1,4 +1,4 @@
-// RepairTicketTests.cs
+// tests/Modules/DoubleStar.Modules.Repairs.Tests/RepairTicketTests.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Repairs;
 using DoubleStar.Modules.Repairs.Domain.Entities;
 
@@ -14,14 +14,40 @@ public sealed class RepairTicketTests
     }
 
     [Fact]
-    public void RecordDiagnosis_FromReceived_EndsAtAwaitingApprovalWithTheQuoteStored()
+    public void StartDiagnosis_FromReceived_MovesToDiagnosing()
     {
         var ticket = RepairTicket.Open(null, "iPhone 11", null, "Won't turn on");
+        ticket.StartDiagnosis();
+        ticket.Status.Should().Be(RepairStatus.Diagnosing);
+    }
+
+    [Fact]
+    public void StartDiagnosis_WhenNotReceived_Throws()
+    {
+        var ticket = RepairTicket.Open(null, "iPhone 11", null, "Won't turn on");
+        ticket.StartDiagnosis();
+        var act = () => ticket.StartDiagnosis();
+        act.Should().Throw<InvalidOperationException>();
+    }
+
+    [Fact]
+    public void RecordDiagnosis_WhenNotDiagnosing_Throws()
+    {
+        var ticket = RepairTicket.Open(null, "iPhone 11", null, "Won't turn on");
+        var act = () => ticket.RecordDiagnosis("Dead battery", 15_000_00);
+        act.Should().Throw<InvalidOperationException>();
+    }
+
+    [Fact]
+    public void RecordDiagnosis_FromDiagnosing_EndsAtAwaitingApprovalWithTheQuoteStored()
+    {
+        var ticket = RepairTicket.Open(null, "iPhone 11", null, "Won't turn on");
+        ticket.StartDiagnosis();
         ticket.RecordDiagnosis("Dead battery", 15_000_00);
 
         ticket.Status.Should().Be(RepairStatus.AwaitingApproval);
         ticket.QuotedPriceKobo.Should().Be(15_000_00);
-        ticket.StatusHistory.Should().HaveCount(2); // Received->Diagnosing, Diagnosing->AwaitingApproval
+        ticket.StatusHistory.Should().HaveCount(2);
     }
 
     [Fact]
@@ -44,6 +70,7 @@ public sealed class RepairTicketTests
     public void Full_happy_path_reaches_Collected_with_five_history_entries()
     {
         var ticket = RepairTicket.Open(null, "iPhone 11", null, "Won't turn on");
+        ticket.StartDiagnosis();
         ticket.RecordDiagnosis("Dead battery", 15_000_00);
         ticket.ApproveQuote();
         ticket.AddPart(productId: 1, quantity: 1, unitCostKobo: 8_000_00);
@@ -57,6 +84,7 @@ public sealed class RepairTicketTests
 
     [Theory]
     [InlineData(RepairStatus.Received)]
+    [InlineData(RepairStatus.Diagnosing)]
     [InlineData(RepairStatus.AwaitingApproval)]
     [InlineData(RepairStatus.InRepair)]
     [InlineData(RepairStatus.Ready)]
@@ -82,6 +110,9 @@ public sealed class RepairTicketTests
         var ticket = RepairTicket.Open(null, "Test device", null, "Test fault");
         if (status == RepairStatus.Received) return ticket;
 
+        ticket.StartDiagnosis();
+        if (status == RepairStatus.Diagnosing) return ticket;
+
         ticket.RecordDiagnosis("Diagnosis", 10_000_00);
         if (status == RepairStatus.AwaitingApproval) return ticket;
 
@@ -92,6 +123,6 @@ public sealed class RepairTicketTests
         if (status == RepairStatus.Ready) return ticket;
 
         ticket.CollectDevice();
-        return ticket; // Collected
+        return ticket;
     }
 }

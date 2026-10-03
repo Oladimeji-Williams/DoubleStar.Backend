@@ -13,6 +13,7 @@ using DoubleStar.Modules.Sales;
 using DoubleStar.Modules.Repairs;
 using DoubleStar.Modules.Payments;
 using DoubleStar.Modules.Notifications;
+using DoubleStar.Modules.Reviews;
 
 if (!string.Equals(
     Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
@@ -35,6 +36,7 @@ var moduleAssemblies = new[]
     typeof(DoubleStar.Modules.Payments.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Notifications.AssemblyMarker).Assembly,
     typeof(DoubleStar.Modules.Reporting.AssemblyMarker).Assembly,
+    typeof(DoubleStar.Modules.Reviews.AssemblyMarker).Assembly
 
     // more modules get appended here as we build them: Customers, Catalog, ...
 };
@@ -50,8 +52,11 @@ builder.Services.AddSalesModule(builder.Configuration);
 builder.Services.AddRepairsModule(builder.Configuration);
 builder.Services.AddPaymentsModule(builder.Configuration);
 builder.Services.AddNotificationsModule(builder.Configuration);
+builder.Services.AddReviewsModule(builder.Configuration);
 
 builder.Services.Configure<FrontendOptions>(builder.Configuration.GetSection(FrontendOptions.SectionName));
+builder.Services.AddResponseCompression(options => options.EnableForHttps = true);
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -60,12 +65,19 @@ using (var scope = app.Services.CreateScope())
     await IdentitySeeder.SeedAsync(scope.ServiceProvider);
 }
 
+app.UseResponseCompression();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+}
+app.UseStaticFiles();
 app.UseSecurityHeaders();
 app.UseApiCors();
 if (!app.Environment.IsEnvironment("Testing"))
@@ -74,6 +86,7 @@ if (!app.Environment.IsEnvironment("Testing"))
 }
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapHealthChecks("/health");
 app.MapControllers();
 
 app.Run();

@@ -50,19 +50,21 @@ public sealed class RepairTicket : Entity
         TechnicianUserId = technicianUserId;
     }
 
-    /// <summary>Received/Diagnosing → AwaitingApproval, recording notes and a quote in one step.</summary>
+    public void StartDiagnosis()
+    {
+        if (Status != RepairStatus.Received)
+        {
+            throw new InvalidOperationException($"Cannot start diagnosis while the ticket is {Status}.");
+        }
+        TransitionTo(RepairStatus.Diagnosing);
+    }
+
     public void RecordDiagnosis(string diagnosisNotes, long quotedPriceKobo)
     {
-        if (Status == RepairStatus.Received)
-        {
-            TransitionTo(RepairStatus.Diagnosing);
-        }
-
         if (Status != RepairStatus.Diagnosing)
         {
             throw new InvalidOperationException($"Cannot record a diagnosis while the ticket is {Status}.");
         }
-
         if (quotedPriceKobo < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(quotedPriceKobo), "Quote cannot be negative.");

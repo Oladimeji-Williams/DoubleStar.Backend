@@ -5,4 +5,4 @@ namespace DoubleStar.Modules.Catalog.Application.DTOs;
 
 public sealed record ProductDto(
     int Id, string Name, string Sku, string? Description, int? CategoryId, int? BrandId,
-    long UnitPriceKobo, StockTrackingMode TrackingMode, bool IsArchived);
+    long UnitPriceKobo, StockTrackingMode TrackingMode, bool IsArchived, string? ImageUrl);

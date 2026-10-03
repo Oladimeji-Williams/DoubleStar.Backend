@@ -21,4 +21,14 @@ public static class AuthErrors
         "Auth.ChangePasswordFailed", details, ErrorType.Validation);
     public static Error InvalidRole(string role) => new(
         "Auth.InvalidRole", $"'{role}' is not a valid staff role.", ErrorType.Validation);
+    public static Error CannotModifyOwnAccount() => new(
+        "Auth.CannotModifyOwnAccount",
+        "You can't change your own role or active status here — use your profile page for your own details.",
+        ErrorType.Forbidden);
+    public static Error TwoFactorRequired() => new(
+        "Auth.TwoFactorRequired", "Two-factor authentication code required.", ErrorType.Unauthorized);
+    public static Error InvalidTwoFactorCode() => new(
+        "Auth.InvalidTwoFactorCode", "That code is incorrect or has expired.", ErrorType.Validation);
+    public static Error EmailNotConfirmed() => new(
+        "Auth.EmailNotConfirmed", "Please confirm your email address before signing in.", ErrorType.Unauthorized);
 }

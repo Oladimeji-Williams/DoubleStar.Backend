@@ -14,6 +14,7 @@ public sealed class Product : Entity
     public long UnitPriceKobo { get; private set; }
     public StockTrackingMode TrackingMode { get; private set; }
     public bool IsArchived { get; private set; }
+    public string? ImageUrl { get; private set; }
 
     private Product() { }
 
@@ -57,4 +58,5 @@ public sealed class Product : Entity
 
     public void Archive() => IsArchived = true;
     public void Unarchive() => IsArchived = false;
+    public void SetImage(string? imageUrl) => ImageUrl = imageUrl;
 }

@@ -28,6 +28,19 @@ public sealed class Sale : Entity
             throw new InvalidOperationException("Cannot add lines to a sale that is not in Draft status.");
         }
 
+        // Bulk items merge into an existing line for the same product — a serialized item
+        // never merges, since each one is a distinct physical unit and must stay its own line.
+        if (serialNumber is null)
+        {
+            var existingLine = _lines.FirstOrDefault(l => l.ProductId == productId && l.SerialNumber is null);
+            if (existingLine is not null)
+            {
+                existingLine.IncreaseQuantity(quantity);
+                RecalculateTotal();
+                return existingLine;
+            }
+        }
+
         var line = SaleLine.Create(productId, unitPriceKobo, quantity, serialNumber);
         _lines.Add(line);
         RecalculateTotal();

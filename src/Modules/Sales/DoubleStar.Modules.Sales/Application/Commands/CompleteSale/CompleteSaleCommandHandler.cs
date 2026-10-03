@@ -5,10 +5,10 @@ using DoubleStar.Modules.Sales.Application.DTOs;
 using DoubleStar.Modules.Sales.Application.Errors;
 using DoubleStar.Modules.Sales.Application.Mappings;
 using DoubleStar.Modules.Sales.Domain.Enums;
+using DoubleStar.SharedKernel.Contracts.Catalog;
 
 namespace DoubleStar.Modules.Sales.Application.Commands.CompleteSaleCommand;
-
-public sealed class CompleteSaleCommandHandler(ISaleRepository saleRepository, IStockAdjuster stockAdjuster)
+public sealed class CompleteSaleCommandHandler(ISaleRepository saleRepository, IStockAdjuster stockAdjuster, IProductCatalog productCatalog)
     : IRequestHandler<CompleteSaleCommand, Result<SaleDto>>
 {
     public async Task<Result<SaleDto>> Handle(CompleteSaleCommand request, CancellationToken cancellationToken)
@@ -47,6 +47,7 @@ public sealed class CompleteSaleCommandHandler(ISaleRepository saleRepository, I
         sale.Complete();
         await saleRepository.UpdateAsync(sale, cancellationToken);
 
-        return Result<SaleDto>.Success(sale.ToDto());
+        var dto = await sale.ToDto().WithProductNamesAsync(productCatalog, cancellationToken);
+        return Result<SaleDto>.Success(dto);
     }
 }

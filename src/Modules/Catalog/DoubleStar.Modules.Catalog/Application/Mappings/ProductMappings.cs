@@ -9,7 +9,7 @@ public static class ProductMappings
 {
     public static ProductDto ToDto(this Product product) => new(
         product.Id, product.Name, product.Sku, product.Description, product.CategoryId, product.BrandId,
-        product.UnitPriceKobo, product.TrackingMode, product.IsArchived);
+        product.UnitPriceKobo, product.TrackingMode, product.IsArchived, product.ImageUrl);
 
     public static ProductSummaryDto ToSummaryDto(this Product product) =>
         new(product.Id, product.Name, product.Sku, product.UnitPriceKobo, product.TrackingMode);

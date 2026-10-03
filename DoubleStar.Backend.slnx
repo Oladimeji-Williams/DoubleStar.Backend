@@ -33,6 +33,9 @@
   <Folder Name="/src/modules/Reporting/">
     <Project Path="src/Modules/Reporting/DoubleStar.Modules.Reporting/DoubleStar.Modules.Reporting.csproj" />
   </Folder>
+  <Folder Name="/src/modules/Reviews/">
+    <Project Path="src/Modules/Reviews/DoubleStar.Modules.Reviews/DoubleStar.Modules.Reviews.csproj" />
+  </Folder>
   <Folder Name="/src/modules/Sales/">
     <Project Path="src/Modules/Sales/DoubleStar.Modules.Sales/DoubleStar.Modules.Sales.csproj" />
   </Folder>

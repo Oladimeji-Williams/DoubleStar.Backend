@@ -1,26 +1,31 @@
-// Application/EventHandlers/CustomerAccountRegisteredEventHandler.cs
 using DoubleStar.SharedKernel.Contracts.Identity;
 using DoubleStar.Modules.Customers.Application.Abstractions;
 using DoubleStar.Modules.Customers.Domain.Entities;
+using MediatR;
 
 namespace DoubleStar.Modules.Customers.Application.EventHandlers;
 
-public sealed class CustomerAccountRegisteredEventHandler(ICustomerRepository customerRepository)
+public sealed class CustomerAccountRegisteredEventHandler(
+    ICustomerRepository customerRepository)
     : INotificationHandler<CustomerAccountRegisteredEvent>
 {
-    public async Task Handle(CustomerAccountRegisteredEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(
+        CustomerAccountRegisteredEvent notification,
+        CancellationToken cancellationToken)
     {
-        if (await customerRepository.GetByIdAsync(notification.UserId, cancellationToken) is not null)
+        if (await customerRepository.GetByIdAsync(
+                notification.UserId,
+                cancellationToken) is not null)
         {
-            return; // already linked — safe to receive this more than once
+            return;
         }
 
         var customer = Customer.CreateForAccount(
             notification.UserId,
-            $"{notification.FirstName} {notification.LastName}".Trim(),
-            notification.Phone,
             notification.Email);
 
-        await customerRepository.AddAsync(customer, cancellationToken);
+        await customerRepository.AddAsync(
+            customer,
+            cancellationToken);
     }
 }
