@@ -37,7 +37,7 @@ public sealed class AddPartUsedCommandHandler(
         {
             var part = ticket.AddPart(request.ProductId, request.Quantity, product.UnitPriceKobo);
             await repairTicketRepository.UpdateAsync(ticket, cancellationToken);
-            return Result<RepairPartDto>.Success(part.ToDto());
+            return Result<RepairPartDto>.Success(part.ToDto() with { ProductName = product.Name });
         }
         catch (InvalidOperationException ex)
         {

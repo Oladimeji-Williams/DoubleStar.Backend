@@ -12,4 +12,6 @@ public interface IProductRepository
     Task<IReadOnlyList<Product>> SearchAsync(string term, CancellationToken cancellationToken = default);
     Task AddAsync(Product product, CancellationToken cancellationToken = default);
     Task UpdateAsync(Product product, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<Product>> GetArchivedAsync(CancellationToken cancellationToken = default);
+    Task<(IReadOnlyList<Product> Items, int TotalCount)> GetPagedAsync(int page, int pageSize, CancellationToken cancellationToken = default);
 }

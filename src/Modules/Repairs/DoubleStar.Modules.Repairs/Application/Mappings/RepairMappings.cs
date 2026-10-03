@@ -8,7 +8,7 @@ namespace DoubleStar.Modules.Repairs.Application.Mappings;
 public static class RepairMappings
 {
     public static RepairPartDto ToDto(this RepairPart part) =>
-        new(part.Id, part.ProductId, part.Quantity, part.UnitCostKobo, part.TotalCostKobo);
+        new(part.Id, part.ProductId, part.Quantity, part.UnitCostKobo, part.TotalCostKobo, $"Product #{part.ProductId}");
 
     public static RepairTicketDto ToDto(this RepairTicket ticket) => new(
         ticket.Id, ticket.CustomerId, ticket.DeviceDescription, ticket.ImeiOrSerial, ticket.FaultDescription,

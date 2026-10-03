@@ -9,6 +9,9 @@ public sealed class ApplicationIdentityDbContext(DbContextOptions<ApplicationIde
     : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>(options)
 {
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    public DbSet<EmailSignInCode> EmailSignInCodes => Set<EmailSignInCode>();
+    public DbSet<TwoFactorChallenge> TwoFactorChallenges => Set<TwoFactorChallenge>();
+    public DbSet<HumanVerificationChallenge> HumanVerificationChallenges => Set<HumanVerificationChallenge>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -17,8 +20,8 @@ public sealed class ApplicationIdentityDbContext(DbContextOptions<ApplicationIde
 
         builder.Entity<ApplicationUser>(entity =>
         {
-            entity.Property(x => x.FirstName).HasMaxLength(100).IsRequired();
-            entity.Property(x => x.LastName).HasMaxLength(100).IsRequired();
+            entity.Property(x => x.FirstName).HasMaxLength(100).IsRequired(false);
+            entity.Property(x => x.LastName).HasMaxLength(100).IsRequired(false);
             entity.Property(x => x.CreatedAtUtc).IsRequired();
         });
 

@@ -5,4 +5,5 @@ public sealed class FrontendOptions
 {
     public const string SectionName = "Frontend";
     public string BaseUrl { get; init; } = null!;
+    public string CustomerAppUrl { get; init; } = null!;
 }

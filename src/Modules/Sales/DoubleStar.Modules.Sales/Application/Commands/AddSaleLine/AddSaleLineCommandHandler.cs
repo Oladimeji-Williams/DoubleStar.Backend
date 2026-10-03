@@ -66,7 +66,7 @@ public sealed class AddSaleLineCommandHandler(
         {
             var line = sale.AddLine(request.ProductId, product.UnitPriceKobo, quantity, request.SerialNumber);
             await saleRepository.UpdateAsync(sale, cancellationToken);
-            return Result<SaleLineDto>.Success(line.ToDto());
+            return Result<SaleLineDto>.Success(line.ToDto() with { ProductName = product.Name });
         }
         catch (InvalidOperationException ex)
         {

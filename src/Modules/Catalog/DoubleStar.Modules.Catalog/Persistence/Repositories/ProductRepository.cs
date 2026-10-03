@@ -16,7 +16,6 @@ public sealed class ProductRepository(CatalogDbContext dbContext) : IProductRepo
         var idList = ids.Distinct().ToList();
         return await dbContext.Products.Where(p => idList.Contains(p.Id)).ToListAsync(cancellationToken);
     }
-
     public Task<Product?> GetBySkuAsync(string sku, CancellationToken cancellationToken = default) =>
         dbContext.Products.FirstOrDefaultAsync(p => p.Sku == sku.ToUpperInvariant(), cancellationToken);
 
@@ -32,16 +31,23 @@ public sealed class ProductRepository(CatalogDbContext dbContext) : IProductRepo
             .Take(50)
             .ToListAsync(cancellationToken);
     }
-
     public async Task AddAsync(Product product, CancellationToken cancellationToken = default)
     {
         await dbContext.Products.AddAsync(product, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
-
     public async Task UpdateAsync(Product product, CancellationToken cancellationToken = default)
     {
         dbContext.Products.Update(product);
         await dbContext.SaveChangesAsync(cancellationToken);
+    }
+    public async Task<IReadOnlyList<Product>> GetArchivedAsync(CancellationToken cancellationToken = default) =>
+        await dbContext.Products.Where(p => p.IsArchived).OrderBy(p => p.Name).ToListAsync(cancellationToken);
+    public async Task<(IReadOnlyList<Product> Items, int TotalCount)> GetPagedAsync(int page, int pageSize, CancellationToken cancellationToken = default)
+    {
+        var query = dbContext.Products.Where(p => !p.IsArchived).OrderBy(p => p.Name);
+        var totalCount = await query.CountAsync(cancellationToken);
+        var items = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+        return (items, totalCount);
     }
 }

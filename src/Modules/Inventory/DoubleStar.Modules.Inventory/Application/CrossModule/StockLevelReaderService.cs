@@ -25,4 +25,7 @@ public sealed class StockLevelReaderService(
         var stockItems = await stockItemRepository.GetAllAsync(cancellationToken);
         return stockItems.Select(s => new StockLevelDto(s.ProductId, s.QuantityAvailable, s.QuantityReserved)).ToList();
     }
+
+    public Task<IReadOnlyDictionary<int, int>> GetSerializedInStockCountsAsync(CancellationToken cancellationToken = default) =>
+        serializedUnitRepository.GetInStockCountsByProductAsync(cancellationToken);
 }

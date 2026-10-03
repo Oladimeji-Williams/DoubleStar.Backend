@@ -25,4 +25,5 @@ public sealed class SaleLine : Entity
     };
 
     internal void MarkStockDeducted() => IsStockDeducted = true;
+    internal void IncreaseQuantity(int additionalQuantity) => Quantity += additionalQuantity;
 }

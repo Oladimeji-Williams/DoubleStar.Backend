@@ -113,6 +113,9 @@ namespace DoubleStar.Modules.Catalog.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsArchived")
                         .HasColumnType("boolean");
 

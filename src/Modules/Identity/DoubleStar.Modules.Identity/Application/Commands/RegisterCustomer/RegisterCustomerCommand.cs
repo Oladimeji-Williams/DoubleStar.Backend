@@ -1,7 +1,4 @@
-// Application/Commands/RegisterCustomerCommand/RegisterCustomerCommand.cs
-using DoubleStar.Modules.Identity.Application.DTOs;
-
+// RegisterCustomerCommand.cs — final shape
+using DoubleStar.Modules.Identity.Infrastructure.Turnstile;
 namespace DoubleStar.Modules.Identity.Application.Commands.RegisterCustomerCommand;
-
-public sealed record RegisterCustomerCommand(
-    string FirstName, string LastName, string Email, string? Phone, string Password) : IRequest<Result<Guid>>;
+public sealed record RegisterCustomerCommand(string Email, string Password, string? TurnstileToken) : IRequest<Result<Guid>>;

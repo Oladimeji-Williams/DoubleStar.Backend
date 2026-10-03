@@ -22,7 +22,7 @@ public sealed class SendSaleReceiptCommandHandler(ICustomerDirectory customerDir
                 "Notifications.NoEmail", "This customer has no email on file to send a receipt to.", ErrorType.Validation));
         }
 
-        var (subject, html) = EmailTemplates.SaleReceipt(customer.Name, request.SaleId, request.TotalKobo);
+        var (subject, html) = EmailTemplates.SaleReceipt(customer.Name ?? "Customer", request.SaleId, request.TotalKobo);
         await dispatcher.SendEmailAsync(customer.Email, subject, html, "SaleReceipt", cancellationToken);
 
         return Result.Success();
