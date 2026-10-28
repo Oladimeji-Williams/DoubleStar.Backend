@@ -1,36 +1,17 @@
-// .../InitializePaystackPaymentCommandHandler.cs
-using DoubleStar.SharedKernel.Abstractions.Payments;
-using DoubleStar.Modules.Payments.Application.Abstractions;
-using DoubleStar.Modules.Payments.Application.Errors;
-using DoubleStar.Modules.Payments.Domain.Entities;
+using DoubleStar.SharedKernel.Contracts.Payments;
 
-namespace DoubleStar.Modules.Payments.Application.Commands.InitializePaystackPaymentCommand;
+namespace DoubleStar.Modules.Payments.Application.Commands.InitializePaystackPayment;
 
-public sealed class InitializePaystackPaymentCommandHandler(
-    IPaymentTransactionRepository paymentTransactionRepository, IPaymentGateway paymentGateway)
+public sealed class InitializePaystackPaymentCommandHandler(IPaymentInitiator paymentInitiator)
     : IRequestHandler<InitializePaystackPaymentCommand, Result<string>>
 {
     public async Task<Result<string>> Handle(InitializePaystackPaymentCommand request, CancellationToken cancellationToken)
     {
-        // Referenceable and unique before we even call Paystack, since we need
-        // something to look the transaction up by later in Verify/Webhook.
-        var reference = $"DS-{request.SourceType}-{request.SourceId}-{Guid.NewGuid():N}"[..40];
+        var result = await paymentInitiator.InitializeAsync(
+            request.SourceType, request.SourceId, request.AmountKobo, request.Email, request.CallbackUrl, cancellationToken);
 
-        PaymentInitializeResult gatewayResult;
-        try
-        {
-            gatewayResult = await paymentGateway.InitializeTransactionAsync(
-                request.Email, request.AmountKobo, reference, request.CallbackUrl, cancellationToken);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return Result<string>.Failure(PaymentErrors.GatewayFailure(ex.Message));
-        }
-
-        var transaction = PaymentTransaction.StartPaystack(
-            request.SourceType, request.SourceId, request.AmountKobo, gatewayResult.Reference);
-        await paymentTransactionRepository.AddAsync(transaction, cancellationToken);
-
-        return Result<string>.Success(gatewayResult.AuthorizationUrl);
+        return result.IsFailure
+            ? Result<string>.Failure(result.Errors)
+            : Result<string>.Success(result.Value!.AuthorizationUrl);
     }
 }

@@ -1,4 +1,3 @@
-// Application/CrossModule/ProductCatalogService.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Catalog.Application.Abstractions;
 using DoubleStar.Modules.Catalog.Application.Mappings;

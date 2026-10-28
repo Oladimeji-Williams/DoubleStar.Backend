@@ -1,4 +1,3 @@
-// Api/ApiControllerBase.cs
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoubleStar.BuildingBlocks.Infrastructure.Api;

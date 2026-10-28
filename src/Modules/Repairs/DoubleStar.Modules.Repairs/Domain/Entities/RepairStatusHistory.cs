@@ -1,4 +1,3 @@
-// Domain/Entities/RepairStatusHistory.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.SharedKernel.Contracts.Repairs;
 

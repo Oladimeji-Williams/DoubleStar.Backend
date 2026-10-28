@@ -1,4 +1,3 @@
-// Persistence/Configurations/CustomerConfiguration.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DoubleStar.Modules.Customers.Domain.Entities;

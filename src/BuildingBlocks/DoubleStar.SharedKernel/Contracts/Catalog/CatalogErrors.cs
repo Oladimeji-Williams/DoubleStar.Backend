@@ -1,4 +1,3 @@
-// Contracts/Catalog/CatalogErrors.cs
 using DoubleStar.SharedKernel.Common.Primitives;
 
 namespace DoubleStar.SharedKernel.Contracts.Catalog;

@@ -1,4 +1,3 @@
-// Infrastructure/Identity/IdentityConfiguration.cs
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using DoubleStar.Modules.Identity.Persistence;

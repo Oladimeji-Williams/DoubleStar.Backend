@@ -1,4 +1,3 @@
-// Modules/Repairs/Application/Mappings/RepairPartEnricher.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Repairs.Application.DTOs;
 

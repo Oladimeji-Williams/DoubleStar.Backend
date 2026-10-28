@@ -1,7 +1,9 @@
-﻿// tests/DoubleStar.Api.IntegrationTests/ApiTestHelpers.cs — full replacement
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using DoubleStar.BuildingBlocks.Infrastructure.Api.Contracts;
+using Microsoft.Extensions.DependencyInjection;
+using DoubleStar.SharedKernel.Abstractions.Authentication;
+
 
 namespace DoubleStar.Api.IntegrationTests;
 
@@ -31,6 +33,34 @@ internal static class ApiTestHelpers
         }
 
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        return client;
+    }
+
+    /// <summary>Registers a brand-new customer, confirms their email and returns a client signed in as them.</summary>
+    public static async Task<HttpClient> CreateCustomerClientAsync(this DoubleStarApiFactory factory)
+    {
+        var client = factory.CreateClient();
+        var email = $"customer-{Guid.NewGuid():N}@example.com";
+
+        (await client.PostAsJsonAsync(
+            "/api/v1/authentication/register-customer",
+            new { email, phone = (string?)null, password = "Password123!" })).EnsureSuccessStatusCode();
+
+        using (var scope = factory.Services.CreateScope())
+        {
+            var identityService = scope.ServiceProvider.GetRequiredService<IIdentityService>();
+            var token = await identityService.GenerateEmailConfirmationTokenAsync(email, CancellationToken.None);
+            (await factory.CreateClient().PostAsJsonAsync(
+                "/api/v1/authentication/confirm-email", new { email, token })).EnsureSuccessStatusCode();
+        }
+
+        var login = await client.PostAsJsonAsync(
+            "/api/v1/authentication/login", new { emailOrPhone = email, password = "Password123!" });
+        login.EnsureSuccessStatusCode();
+
+        var body = await login.Content.ReadFromJsonAsync<ApiResponse<LoginResponseBody>>();
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", body!.Data!.AuthResult!.AccessToken);
         return client;
     }
 

@@ -1,4 +1,3 @@
-// .../ReactivateStaffCommandHandler.cs
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 
 namespace DoubleStar.Modules.Identity.Application.Commands.ReactivateStaffCommand;

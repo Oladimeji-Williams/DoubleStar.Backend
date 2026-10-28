@@ -1,4 +1,3 @@
-// Application/Templates/SmsTemplates.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 
 namespace DoubleStar.Modules.Notifications.Application.Templates;

@@ -1,4 +1,3 @@
-// Application/Mappings/ProductMappings.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Catalog.Application.DTOs;
 using DoubleStar.Modules.Catalog.Domain.Entities;
@@ -12,5 +11,6 @@ public static class ProductMappings
         product.UnitPriceKobo, product.TrackingMode, product.IsArchived, product.ImageUrl);
 
     public static ProductSummaryDto ToSummaryDto(this Product product) =>
-        new(product.Id, product.Name, product.Sku, product.UnitPriceKobo, product.TrackingMode);
+        new(product.Id, product.Name, product.Sku, product.UnitPriceKobo, product.TrackingMode,
+            product.IsArchived, product.ImageUrl);
 }

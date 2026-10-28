@@ -1,4 +1,3 @@
-// Infrastructure/Email/EmailOptions.cs
 namespace DoubleStar.Modules.Notifications.Infrastructure.Email;
 
 public sealed class EmailOptions

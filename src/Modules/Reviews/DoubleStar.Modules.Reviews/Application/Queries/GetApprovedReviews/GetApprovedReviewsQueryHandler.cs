@@ -1,5 +1,4 @@
-﻿// .../GetApprovedReviewsQueryHandler.cs
-using DoubleStar.SharedKernel.Abstractions.Authentication;
+﻿using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.Modules.Reviews.Application.Abstractions;
 using DoubleStar.Modules.Reviews.Application.DTOs;
 using DoubleStar.Modules.Reviews.Application.Mappings;
@@ -12,8 +11,10 @@ public sealed class GetApprovedReviewsQueryHandler(IReviewRepository reviewRepos
     public async Task<Result<IReadOnlyList<ReviewDto>>> Handle(GetApprovedReviewsQuery request, CancellationToken cancellationToken)
     {
         var reviews = await reviewRepository.GetApprovedAsync(cancellationToken);
+        var canModerate = currentUser.IsInRole("Manager") || currentUser.IsInRole("Admin");
+
         var dtos = reviews
-            .Select(r => r.ToDto(canDelete: currentUser.IsStaff || (r.ReviewerUserId is not null && r.ReviewerUserId == currentUser.UserId)))
+            .Select(r => r.ToDto(canDelete: canModerate || (r.ReviewerUserId is not null && r.ReviewerUserId == currentUser.UserId)))
             .ToList();
         return Result<IReadOnlyList<ReviewDto>>.Success(dtos);
     }

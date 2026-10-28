@@ -31,6 +31,9 @@ namespace DoubleStar.Modules.Sales.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CompletedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -55,6 +58,8 @@ namespace DoubleStar.Modules.Sales.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompletedAtUtc");
 
                     b.HasIndex("CustomerId");
 

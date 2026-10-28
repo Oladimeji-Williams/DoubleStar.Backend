@@ -1,19 +1,15 @@
 using DoubleStar.Api;
 using DoubleStar.Api.Common.Cors;
+using DoubleStar.Api.Common.Database;
+using DoubleStar.Api.Common.Errors;
+using DoubleStar.Api.Common.Health;
 using DoubleStar.Api.Common.Security;
-using DoubleStar.SharedKernel.Common.Options;
+using DoubleStar.Api.Realtime;
 using DoubleStar.BuildingBlocks.Application;
 using DoubleStar.BuildingBlocks.Infrastructure;
-using DoubleStar.Modules.Identity;
 using DoubleStar.Modules.Identity.Infrastructure.Identity;
-using DoubleStar.Modules.Customers;
-using DoubleStar.Modules.Catalog;
-using DoubleStar.Modules.Inventory;
-using DoubleStar.Modules.Sales;
-using DoubleStar.Modules.Repairs;
-using DoubleStar.Modules.Payments;
-using DoubleStar.Modules.Notifications;
-using DoubleStar.Modules.Reviews;
+using DoubleStar.SharedKernel.Common.Options;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 if (!string.Equals(
     Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
@@ -25,44 +21,47 @@ if (!string.Equals(
 
 var builder = WebApplication.CreateBuilder(args);
 
-var moduleAssemblies = new[]
-{
-    typeof(DoubleStar.Modules.Identity.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Customers.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Catalog.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Inventory.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Sales.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Repairs.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Payments.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Notifications.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Reporting.AssemblyMarker).Assembly,
-    typeof(DoubleStar.Modules.Reviews.AssemblyMarker).Assembly
-
-    // more modules get appended here as we build them: Customers, Catalog, ...
-};
-
-builder.Services.AddApiServices(builder.Configuration, moduleAssemblies);
-builder.Services.AddBuildingBlocksApplication(moduleAssemblies);
+builder.Services.AddApiServices(builder.Configuration, ApiModules.Assemblies);
+builder.Services.AddBuildingBlocksApplication(ApiModules.Assemblies);
 builder.Services.AddBuildingBlocksInfrastructure();
-builder.Services.AddIdentityModule(builder.Configuration);
-builder.Services.AddCustomersModule(builder.Configuration);
-builder.Services.AddCatalogModule(builder.Configuration);
-builder.Services.AddInventoryModule(builder.Configuration);
-builder.Services.AddSalesModule(builder.Configuration);
-builder.Services.AddRepairsModule(builder.Configuration);
-builder.Services.AddPaymentsModule(builder.Configuration);
-builder.Services.AddNotificationsModule(builder.Configuration);
-builder.Services.AddReviewsModule(builder.Configuration);
+builder.Services.AddAllModules(builder.Configuration);
+builder.Services.AddRealtimeServices();
 
-builder.Services.Configure<FrontendOptions>(builder.Configuration.GetSection(FrontendOptions.SectionName));
+builder.Services.Configure<FrontendOptions>(
+    builder.Configuration.GetSection(FrontendOptions.SectionName));
+
 builder.Services.AddResponseCompression(options => options.EnableForHttps = true);
-builder.Services.AddHealthChecks();
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+builder.Services
+    .AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("database", tags: ["ready"]);
 
 var app = builder.Build();
+
+// `dotnet DoubleStar.API.dll --migrate-only` applies migrations and exits (for deploy pipelines).
+// Setting Database__MigrateOnStartup=true does the same and then keeps serving (single-instance setups).
+var migrateOnly = args.Contains("--migrate-only");
+if (migrateOnly || app.Configuration.GetValue<bool>("Database:MigrateOnStartup"))
+{
+    await DatabaseMigrator.MigrateAsync(app.Services);
+}
+
+if (migrateOnly)
+{
+    return;
+}
 
 using (var scope = app.Services.CreateScope())
 {
     await IdentitySeeder.SeedAsync(scope.ServiceProvider);
+}
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler();
+    app.UseHsts();
 }
 
 app.UseResponseCompression();
@@ -73,21 +72,25 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHsts();
-}
 app.UseStaticFiles();
 app.UseSecurityHeaders();
 app.UseApiCors();
+
 if (!app.Environment.IsEnvironment("Testing"))
 {
     app.UseRateLimiter();
 }
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapHealthChecks("/health");
+
+// /health and /health/live: the process is up. /health/ready: the database is reachable too.
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => false });
+app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false });
+app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") });
+
 app.MapControllers();
+app.MapHub<RepairTrackingHub>("/hubs/repair-tracking");
 
 app.Run();
 
@@ -99,10 +102,10 @@ static void LoadDotEnv()
         directory = directory.Parent;
     }
 
+    // No .env (containers, CI, production): configuration comes from real environment variables.
     if (directory is null)
     {
-        throw new FileNotFoundException(
-            "The repository .env file was not found. Copy .env.example to .env and fill it in.");
+        return;
     }
 
     DotNetEnv.Env.Load(Path.Combine(directory.FullName, ".env"));

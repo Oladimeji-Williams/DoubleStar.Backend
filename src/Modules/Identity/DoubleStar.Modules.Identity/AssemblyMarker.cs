@@ -1,4 +1,3 @@
-// AssemblyMarker.cs
 namespace DoubleStar.Modules.Identity;
 
 /// <summary>

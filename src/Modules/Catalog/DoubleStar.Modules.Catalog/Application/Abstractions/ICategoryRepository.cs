@@ -1,4 +1,3 @@
-// Application/Abstractions/ICategoryRepository.cs
 using DoubleStar.Modules.Catalog.Domain.Entities;
 
 namespace DoubleStar.Modules.Catalog.Application.Abstractions;

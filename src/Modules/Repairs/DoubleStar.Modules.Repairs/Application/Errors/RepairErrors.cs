@@ -1,4 +1,3 @@
-// Application/Errors/RepairErrors.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 
 namespace DoubleStar.Modules.Repairs.Application.Errors;

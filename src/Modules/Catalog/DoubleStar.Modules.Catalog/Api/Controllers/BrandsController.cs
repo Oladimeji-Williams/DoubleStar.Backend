@@ -1,4 +1,3 @@
-// Api/Controllers/BrandsController.cs
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DoubleStar.BuildingBlocks.Infrastructure.Api;

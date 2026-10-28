@@ -1,4 +1,3 @@
-// Application/Queries/GetRevenueByPeriodQuery/GetRevenueByPeriodQuery.cs
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetRevenueByPeriodQuery;
 
 public sealed record DailyRevenueDto(DateOnly Date, long RevenueKobo, int SalesCount);

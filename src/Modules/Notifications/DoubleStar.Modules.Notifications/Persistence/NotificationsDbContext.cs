@@ -1,4 +1,3 @@
-// Persistence/NotificationsDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Notifications.Domain.Entities;

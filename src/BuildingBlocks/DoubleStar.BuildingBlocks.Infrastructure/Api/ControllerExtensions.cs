@@ -1,4 +1,3 @@
-// Api/ControllerExtensions.cs
 using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;

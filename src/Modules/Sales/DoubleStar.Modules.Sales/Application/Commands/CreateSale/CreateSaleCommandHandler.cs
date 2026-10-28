@@ -1,4 +1,3 @@
-// .../CreateSaleCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 using DoubleStar.Modules.Sales.Application.Abstractions;
 using DoubleStar.Modules.Sales.Application.DTOs;

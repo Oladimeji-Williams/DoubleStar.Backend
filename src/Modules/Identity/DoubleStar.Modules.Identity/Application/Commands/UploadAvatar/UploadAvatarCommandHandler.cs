@@ -1,4 +1,3 @@
-// .../UploadAvatarCommandHandler.cs
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.SharedKernel.Abstractions.Storage;
 using DoubleStar.SharedKernel.Contracts.Identity;

@@ -1,4 +1,3 @@
-// .../UpdateMyProfileCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.UpdateMyProfileCommand;
 
 public sealed class UpdateMyProfileCommandValidator : AbstractValidator<UpdateMyProfileCommand>

@@ -1,4 +1,3 @@
-// .../AddPartUsedCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.SharedKernel.Contracts.Inventory;
 using DoubleStar.Modules.Repairs.Application.Abstractions;

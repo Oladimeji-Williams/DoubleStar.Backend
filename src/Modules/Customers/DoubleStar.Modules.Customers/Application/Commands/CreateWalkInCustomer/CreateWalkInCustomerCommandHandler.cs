@@ -1,4 +1,3 @@
-// .../CreateWalkInCustomerCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 using DoubleStar.Modules.Customers.Application.Abstractions;
 using DoubleStar.Modules.Customers.Application.Errors;

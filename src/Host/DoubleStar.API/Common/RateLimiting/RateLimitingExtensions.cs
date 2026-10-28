@@ -1,4 +1,3 @@
-// src/Host/DoubleStar.Api/Common/RateLimiting/RateLimitingExtensions.cs
 using System.Threading.RateLimiting;
 using DoubleStar.BuildingBlocks.Infrastructure.RateLimiting;
 

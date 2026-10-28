@@ -1,4 +1,3 @@
-// .../GetStockLevelQueryHandler.cs
 using DoubleStar.SharedKernel.Contracts.Inventory;
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 using DoubleStar.Modules.Inventory.Application.Errors;

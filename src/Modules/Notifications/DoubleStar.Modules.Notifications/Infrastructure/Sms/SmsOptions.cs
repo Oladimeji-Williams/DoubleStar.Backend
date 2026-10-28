@@ -1,4 +1,3 @@
-// Infrastructure/Sms/SmsOptions.cs
 namespace DoubleStar.Modules.Notifications.Infrastructure.Sms;
 
 public sealed class SmsOptions

@@ -1,4 +1,3 @@
-// Application/Services/NotificationDispatcher.cs
 using Microsoft.Extensions.Logging;
 using DoubleStar.SharedKernel.Abstractions.Notifications;
 using DoubleStar.Modules.Notifications.Application.Abstractions;

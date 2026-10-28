@@ -1,4 +1,3 @@
-// .../AddSaleLineCommandValidator.cs
 namespace DoubleStar.Modules.Sales.Application.Commands.AddSaleLineCommand;
 
 public sealed class AddSaleLineCommandValidator : AbstractValidator<AddSaleLineCommand>

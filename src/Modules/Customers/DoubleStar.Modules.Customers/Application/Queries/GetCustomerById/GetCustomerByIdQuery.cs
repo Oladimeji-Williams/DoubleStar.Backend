@@ -1,4 +1,3 @@
-// Application/Queries/GetCustomerByIdQuery/GetCustomerByIdQuery.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 
 namespace DoubleStar.Modules.Customers.Application.Queries.GetCustomerByIdQuery;

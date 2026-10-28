@@ -1,4 +1,3 @@
-// BuildingBlocks.Infrastructure/Storage/CloudinaryOptions.cs
 namespace DoubleStar.BuildingBlocks.Infrastructure.Storage;
 
 public sealed class CloudinaryOptions

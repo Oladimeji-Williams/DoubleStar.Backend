@@ -1,5 +1,4 @@
-﻿// Modules/Reviews/Persistence/Configurations/ReviewConfiguration.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DoubleStar.Modules.Reviews.Domain.Entities;
 

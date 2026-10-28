@@ -1,5 +1,3 @@
-// Infrastructure/Paystack/PaystackService.cs
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,17 +5,10 @@ using Microsoft.Extensions.Options;
 using DoubleStar.SharedKernel.Abstractions.Payments;
 
 namespace DoubleStar.Modules.Payments.Infrastructure.Paystack;
-// Infrastructure/Paystack/PaystackService.cs — replace the constructor section
+
 internal sealed class PaystackService(HttpClient httpClient, IOptions<PaystackOptions> options) : IPaymentGateway
 {
     private readonly PaystackOptions _options = options.Value;
-
-    public PaystackService(HttpClient httpClient, IOptions<PaystackOptions> options, bool _) : this(httpClient, options)
-    {
-        httpClient.BaseAddress = new Uri("https://api.paystack.co/");
-        httpClient.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", _options.SecretKey);
-    }
 
     public async Task<PaymentInitializeResult> InitializeTransactionAsync(
         string email, long amountKobo, string reference, string callbackUrl, CancellationToken cancellationToken)
@@ -51,20 +42,31 @@ internal sealed class PaystackService(HttpClient httpClient, IOptions<PaystackOp
         var body = await response.Content.ReadFromJsonAsync<PaystackVerifyResponse>(cancellationToken)
             ?? throw new InvalidOperationException("Paystack returned an empty verify response.");
 
-        var success = body.Status && body.Data?.Status == "success";
-        return new PaymentVerifyResult(success, body.Data?.Amount ?? 0, reference);
+        var status = body.Data?.Status ?? string.Empty;
+        var success = body.Status && string.Equals(status, "success", StringComparison.OrdinalIgnoreCase);
+
+        return new PaymentVerifyResult(success, body.Data?.Amount ?? 0, reference, status);
     }
 
     public bool VerifyWebhookSignature(string rawBody, string? signatureHeader)
     {
-        if (string.IsNullOrEmpty(signatureHeader))
+        if (string.IsNullOrWhiteSpace(signatureHeader))
         {
             return false;
         }
 
-        var computedHash = HMACSHA512.HashData(Encoding.UTF8.GetBytes(_options.SecretKey), Encoding.UTF8.GetBytes(rawBody));
-        var computedHex = Convert.ToHexString(computedHash);
+        byte[] provided;
+        try
+        {
+            provided = Convert.FromHexString(signatureHeader.Trim());
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
 
-        return string.Equals(computedHex, signatureHeader, StringComparison.OrdinalIgnoreCase);
+        var computed = HMACSHA512.HashData(Encoding.UTF8.GetBytes(_options.SecretKey), Encoding.UTF8.GetBytes(rawBody));
+
+        return CryptographicOperations.FixedTimeEquals(computed, provided);
     }
 }

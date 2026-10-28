@@ -27,17 +27,25 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using DoubleStar.Modules.Identity.Application.Commands.ResendEmailConfirmationCommand;
 
 namespace DoubleStar.Modules.Identity.Api.Controllers;
 
 public sealed class AuthenticationController(ISender sender) : V1ControllerBase
 {
+
     [HttpPost("register-customer")]
     [AllowAnonymous]
     [EnableRateLimiting(RateLimitingPolicies.AuthPolicy)]
-    [ProducesResponseType(typeof(ApiResponse<Guid>), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status409Conflict)]
+    [ProducesResponseType(
+        typeof(ApiResponse<RegistrationOutcome>),
+        StatusCodes.Status201Created)]
+    [ProducesResponseType(
+        typeof(ApiResponse<object>),
+        StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(
+        typeof(ApiResponse<object>),
+        StatusCodes.Status409Conflict)]
     public async Task<IActionResult> RegisterCustomer(
         [FromBody] RegisterCustomerRequest request,
         CancellationToken cancellationToken)
@@ -380,5 +388,22 @@ public sealed class AuthenticationController(ISender sender) : V1ControllerBase
         return result.IsFailure
             ? Failure(result)
             : NoContent();
+    }
+
+
+    [HttpPost("confirm-email/resend")]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitingPolicies.AuthPolicy)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> ResendEmailConfirmation(
+        [FromBody] ResendEmailConfirmationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await sender.Send(
+            new ResendEmailConfirmationCommand(request.Email),
+            cancellationToken);
+
+        // Always return the same response to avoid revealing account existence.
+        return NoContent();
     }
 }

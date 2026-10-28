@@ -1,4 +1,3 @@
-// Application/Mappings/PaymentMappings.cs
 using DoubleStar.SharedKernel.Contracts.Payments;
 using DoubleStar.Modules.Payments.Application.DTOs;
 using DoubleStar.Modules.Payments.Domain.Entities;

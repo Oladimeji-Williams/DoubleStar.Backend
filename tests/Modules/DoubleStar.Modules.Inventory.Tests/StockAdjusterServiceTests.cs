@@ -1,4 +1,3 @@
-// StockAdjusterServiceTests.cs
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 using DoubleStar.Modules.Inventory.Application.CrossModule;
 using DoubleStar.Modules.Inventory.Domain.Entities;

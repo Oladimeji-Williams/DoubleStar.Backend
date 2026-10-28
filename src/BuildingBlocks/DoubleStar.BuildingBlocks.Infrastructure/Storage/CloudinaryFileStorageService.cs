@@ -1,4 +1,3 @@
-// BuildingBlocks.Infrastructure/Storage/CloudinaryFileStorageService.cs
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using DoubleStar.SharedKernel.Abstractions.Storage;

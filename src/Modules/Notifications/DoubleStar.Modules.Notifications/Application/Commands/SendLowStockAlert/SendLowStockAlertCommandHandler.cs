@@ -1,4 +1,3 @@
-// .../SendLowStockAlertCommandHandler.cs
 using DoubleStar.Modules.Notifications.Application.Services;
 using DoubleStar.Modules.Notifications.Application.Templates;
 

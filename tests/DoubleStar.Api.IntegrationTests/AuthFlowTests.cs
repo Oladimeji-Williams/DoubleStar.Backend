@@ -1,5 +1,4 @@
-﻿// tests/DoubleStar.Api.IntegrationTests/AuthFlowTests.cs — full replacement
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,4 +1,3 @@
-// DependencyInjection.cs
 using Microsoft.Extensions.DependencyInjection;
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.BuildingBlocks.Infrastructure.Auditing;

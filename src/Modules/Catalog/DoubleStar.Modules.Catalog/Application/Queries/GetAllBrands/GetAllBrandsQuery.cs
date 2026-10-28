@@ -1,5 +1,5 @@
-// Application/Queries/GetAllBrandsQuery/GetAllBrandsQuery.cs
+using DoubleStar.Modules.Catalog.Application.DTOs;
+
 namespace DoubleStar.Modules.Catalog.Application.Queries.GetAllBrandsQuery;
 
-public sealed record BrandDto(int Id, string Name);
 public sealed record GetAllBrandsQuery : IRequest<Result<IReadOnlyList<BrandDto>>>;

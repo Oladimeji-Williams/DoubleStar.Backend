@@ -1,4 +1,3 @@
-// Application/Queries/GetInventoryValuationQuery/GetInventoryValuationQuery.cs
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetInventoryValuationQuery;
 
 public sealed record InventoryValuationDto(long TotalValueKobo, int ProductCount, int LowStockCount);

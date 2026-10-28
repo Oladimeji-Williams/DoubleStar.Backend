@@ -1,4 +1,3 @@
-// Persistence/CustomersDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Customers.Domain.Entities;

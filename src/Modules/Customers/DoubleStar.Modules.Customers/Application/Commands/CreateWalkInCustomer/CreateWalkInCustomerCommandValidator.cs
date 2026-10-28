@@ -1,4 +1,3 @@
-// .../CreateWalkInCustomerCommandValidator.cs
 namespace DoubleStar.Modules.Customers.Application.Commands.CreateWalkInCustomerCommand;
 
 public sealed class CreateWalkInCustomerCommandValidator : AbstractValidator<CreateWalkInCustomerCommand>

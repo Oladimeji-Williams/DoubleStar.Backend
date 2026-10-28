@@ -1,4 +1,3 @@
-// Domain/Entities/SerializedUnit.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.Modules.Inventory.Domain.Enums;
 
@@ -24,6 +23,33 @@ public sealed class SerializedUnit : GuidEntity
     public bool TryMarkSold()
     {
         if (Status == SerializedUnitStatus.Sold) return false;
+        Status = SerializedUnitStatus.Sold;
+        return true;
+    }
+
+    public bool TryReserve()
+    {
+        if (Status != SerializedUnitStatus.InStock)
+            return false;
+
+        Status = SerializedUnitStatus.Reserved;
+        return true;
+    }
+
+    public bool ReleaseReservation()
+    {
+        if (Status != SerializedUnitStatus.Reserved)
+            return false;
+
+        Status = SerializedUnitStatus.InStock;
+        return true;
+    }
+
+    public bool TryMarkReservedUnitSold()
+    {
+        if (Status != SerializedUnitStatus.Reserved)
+            return false;
+
         Status = SerializedUnitStatus.Sold;
         return true;
     }

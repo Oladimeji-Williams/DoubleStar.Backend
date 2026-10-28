@@ -1,4 +1,3 @@
-// NotificationDispatcherTests.cs
 using DoubleStar.SharedKernel.Abstractions.Notifications;
 using DoubleStar.Modules.Notifications.Application.Abstractions;
 using DoubleStar.Modules.Notifications.Application.Services;

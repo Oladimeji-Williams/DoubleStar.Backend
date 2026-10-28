@@ -1,5 +1,4 @@
-﻿// tests/DoubleStar.Api.IntegrationTests/Fakes/FakeSmsSender.cs
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using DoubleStar.SharedKernel.Abstractions.Notifications;
 
 namespace DoubleStar.Api.IntegrationTests.Fakes;

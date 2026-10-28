@@ -1,4 +1,3 @@
-// Persistence/Repositories/SerializedUnitRepository.cs
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 using DoubleStar.Modules.Inventory.Domain.Entities;
@@ -31,5 +30,41 @@ public sealed class SerializedUnitRepository(InventoryDbContext dbContext) : ISe
             .GroupBy(u => u.ProductId)
             .Select(g => new { ProductId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.ProductId, x => x.Count, cancellationToken);
+    }
+
+    public async Task<IReadOnlyList<SerializedUnit>> GetInStockByProductAsync(
+        int productId, int take, CancellationToken cancellationToken = default) =>
+        await dbContext.SerializedUnits
+            .AsNoTracking()
+            .Where(u => u.ProductId == productId && u.Status == SerializedUnitStatus.InStock)
+            .OrderBy(u => u.CreatedAt)
+            .Take(take)
+            .ToListAsync(cancellationToken);
+
+    public async Task<IReadOnlyList<SerializedUnit>> GetBySerialsAsync(
+        IReadOnlyCollection<string> serialNumbers, CancellationToken cancellationToken = default)
+    {
+        var normalized = serialNumbers.Select(s => s.Trim().ToUpperInvariant()).ToList();
+
+        return await dbContext.SerializedUnits
+            .AsNoTracking()
+            .Where(u => normalized.Contains(u.SerialNumber))
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<bool> TryChangeStatusAsync(
+        Guid unitId, SerializedUnitStatus from, SerializedUnitStatus to, CancellationToken cancellationToken = default)
+    {
+        var now = DateTime.UtcNow;
+
+        var affected = await dbContext.SerializedUnits
+            .Where(u => u.Id == unitId && u.Status == from)
+            .ExecuteUpdateAsync(
+                set => set
+                    .SetProperty(u => u.Status, to)
+                    .SetProperty(u => u.ModifiedAt, now),
+                cancellationToken);
+
+        return affected == 1;
     }
 }

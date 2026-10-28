@@ -1,5 +1,4 @@
-﻿// SeedData/StaffSeedData.cs
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using DoubleStar.Modules.Identity.Domain.Enums;
 using DoubleStar.Modules.Identity.Infrastructure.Identity;
 

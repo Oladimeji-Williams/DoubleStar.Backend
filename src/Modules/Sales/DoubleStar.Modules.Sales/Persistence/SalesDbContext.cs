@@ -1,4 +1,3 @@
-// Persistence/SalesDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Sales.Domain.Entities;

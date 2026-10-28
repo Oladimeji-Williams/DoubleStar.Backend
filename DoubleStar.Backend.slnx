@@ -1,9 +1,9 @@
 <Solution>
   <Folder Name="/src/" />
-  <Folder Name="/src/buildingblocks/">
-    <Project Path="src/buildingblocks/doublestar.buildingblocks.application/doublestar.buildingblocks.application.csproj" />
-    <Project Path="src/buildingblocks/doublestar.buildingblocks.infrastructure/doublestar.buildingblocks.infrastructure.csproj" />
-    <Project Path="src/buildingblocks/doublestar.sharedkernel/doublestar.sharedkernel.csproj" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/DoubleStar.BuildingBlocks.Application/DoubleStar.BuildingBlocks.Application.csproj" />
+    <Project Path="src/BuildingBlocks/DoubleStar.BuildingBlocks.Infrastructure/DoubleStar.BuildingBlocks.Infrastructure.csproj" />
+    <Project Path="src/BuildingBlocks/DoubleStar.SharedKernel/DoubleStar.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/src/Host/">
     <Project Path="src/Host/DoubleStar.API/DoubleStar.API.csproj" />
@@ -15,14 +15,17 @@
   <Folder Name="/src/modules/Customers/">
     <Project Path="src/Modules/Customers/DoubleStar.Modules.Customers/DoubleStar.Modules.Customers.csproj" />
   </Folder>
-  <Folder Name="/src/modules/identity/">
-    <Project Path="src/modules/identity/doublestar.modules.identity/doublestar.modules.identity.csproj" />
+  <Folder Name="/src/modules/Identity/">
+    <Project Path="src/Modules/Identity/DoubleStar.Modules.Identity/DoubleStar.Modules.Identity.csproj" />
   </Folder>
   <Folder Name="/src/modules/Inventory/">
     <Project Path="src/Modules/Inventory/DoubleStar.Modules.Inventory/DoubleStar.Modules.Inventory.csproj" />
   </Folder>
   <Folder Name="/src/modules/Notifications/">
     <Project Path="src/Modules/Notifications/DoubleStar.Modules.Notifications/DoubleStar.Modules.Notifications.csproj" />
+  </Folder>
+  <Folder Name="/src/modules/Orders/">
+    <Project Path="src/Modules/Orders/DoubleStar.Modules.Orders/DoubleStar.Modules.Orders.csproj" />
   </Folder>
   <Folder Name="/src/modules/Payments/">
     <Project Path="src/Modules/Payments/DoubleStar.Modules.Payments/DoubleStar.Modules.Payments.csproj" />
@@ -40,6 +43,9 @@
     <Project Path="src/Modules/Sales/DoubleStar.Modules.Sales/DoubleStar.Modules.Sales.csproj" />
   </Folder>
   <Folder Name="/tests/">
+  <Folder Name="/src/modules/Orders/">
+    <Project Path="src/Modules/Orders/DoubleStar.Modules.Orders/DoubleStar.Modules.Orders.csproj" />
+  </Folder>
     <Project Path="tests/DoubleStar.Api.IntegrationTests/DoubleStar.Api.IntegrationTests.csproj" />
     <Project Path="tests/DoubleStar.ArchitectureTests/DoubleStar.ArchitectureTests.csproj" />
   </Folder>
@@ -49,6 +55,7 @@
     <Project Path="tests/Modules/DoubleStar.Modules.Identity.Tests/DoubleStar.Modules.Identity.Tests.csproj" />
     <Project Path="tests/Modules/DoubleStar.Modules.Inventory.Tests/DoubleStar.Modules.Inventory.Tests.csproj" />
     <Project Path="tests/Modules/DoubleStar.Modules.Notifications.Tests/DoubleStar.Modules.Notifications.Tests.csproj" />
+    <Project Path="tests/Modules/DoubleStar.Modules.Orders.Tests/DoubleStar.Modules.Orders.Tests.csproj" />
     <Project Path="tests/Modules/DoubleStar.Modules.Payments.Tests/DoubleStar.Modules.Payments.Tests.csproj" />
     <Project Path="tests/Modules/DoubleStar.Modules.Repairs.Tests/DoubleStar.Modules.Repairs.Tests.csproj" />
     <Project Path="tests/Modules/DoubleStar.Modules.Sales.Tests/DoubleStar.Modules.Sales.Tests.csproj" />

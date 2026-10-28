@@ -1,4 +1,3 @@
-// Application/DTOs/RepairTicketDto.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 
 namespace DoubleStar.Modules.Repairs.Application.DTOs;

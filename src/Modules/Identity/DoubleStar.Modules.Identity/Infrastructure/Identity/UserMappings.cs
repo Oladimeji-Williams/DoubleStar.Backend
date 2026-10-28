@@ -1,4 +1,3 @@
-// Identity/Infrastructure/Identity/UserMappings.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Identity;
 
 namespace DoubleStar.Modules.Identity.Infrastructure.Identity;

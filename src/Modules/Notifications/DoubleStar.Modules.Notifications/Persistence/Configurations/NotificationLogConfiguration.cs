@@ -1,4 +1,3 @@
-// Persistence/Configurations/NotificationLogConfiguration.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DoubleStar.Modules.Notifications.Domain.Entities;

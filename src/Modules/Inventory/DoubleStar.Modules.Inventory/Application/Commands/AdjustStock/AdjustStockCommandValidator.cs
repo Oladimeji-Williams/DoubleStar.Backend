@@ -1,4 +1,3 @@
-// .../AdjustStockCommandValidator.cs
 namespace DoubleStar.Modules.Inventory.Application.Commands.AdjustStockCommand;
 
 public sealed class AdjustStockCommandValidator : AbstractValidator<AdjustStockCommand>

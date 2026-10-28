@@ -1,4 +1,3 @@
-// Application/CrossModule/PaymentRecordReaderService.cs
 using DoubleStar.SharedKernel.Contracts.Payments;
 using DoubleStar.Modules.Payments.Application.Abstractions;
 using DoubleStar.Modules.Payments.Application.Mappings;

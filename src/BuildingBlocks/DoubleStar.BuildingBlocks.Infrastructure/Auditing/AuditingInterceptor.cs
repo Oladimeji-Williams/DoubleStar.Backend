@@ -1,4 +1,3 @@
-// BuildingBlocks.Infrastructure/Auditing/AuditingInterceptor.cs — replace the whole file
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using DoubleStar.SharedKernel.Domain;

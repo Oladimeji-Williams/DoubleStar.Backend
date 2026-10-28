@@ -1,4 +1,3 @@
-// Persistence/ApplicationIdentityDbContext.cs
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Identity.Infrastructure.Identity;

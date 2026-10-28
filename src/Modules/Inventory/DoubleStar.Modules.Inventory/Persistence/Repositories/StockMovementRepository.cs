@@ -1,4 +1,3 @@
-// Persistence/Repositories/StockMovementRepository.cs
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 using DoubleStar.Modules.Inventory.Domain.Entities;
 

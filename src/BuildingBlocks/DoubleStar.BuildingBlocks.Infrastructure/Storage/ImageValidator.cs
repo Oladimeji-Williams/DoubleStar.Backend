@@ -1,4 +1,3 @@
-// BuildingBlocks.Infrastructure/Storage/ImageValidator.cs
 using DoubleStar.SharedKernel.Abstractions.Storage;
 
 namespace DoubleStar.BuildingBlocks.Infrastructure.Storage;

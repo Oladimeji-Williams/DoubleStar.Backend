@@ -1,4 +1,3 @@
-// Persistence/Repositories/BrandRepository.cs
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Catalog.Application.Abstractions;
 using DoubleStar.Modules.Catalog.Domain.Entities;

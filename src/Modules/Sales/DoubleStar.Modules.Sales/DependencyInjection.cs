@@ -1,4 +1,3 @@
-// DependencyInjection.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +7,7 @@ using DoubleStar.Modules.Sales.Application.Abstractions;
 using DoubleStar.Modules.Sales.Application.CrossModule;
 using DoubleStar.Modules.Sales.Persistence;
 using DoubleStar.Modules.Sales.Persistence.Repositories;
+using DoubleStar.Modules.Sales.Persistence.Analytics;
 
 namespace DoubleStar.Modules.Sales;
 
@@ -27,6 +27,7 @@ public static class DependencyInjection
 
         services.AddScoped<ISaleRepository, SaleRepository>();
         services.AddScoped<ISalesHistory, SalesHistoryService>();
+        services.AddScoped<ISalesAnalyticsReader, SalesAnalyticsReader>();
 
         return services;
     }

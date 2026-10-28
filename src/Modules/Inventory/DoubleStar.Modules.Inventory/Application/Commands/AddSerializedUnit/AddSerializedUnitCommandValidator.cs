@@ -1,4 +1,3 @@
-// .../AddSerializedUnitCommandValidator.cs
 namespace DoubleStar.Modules.Inventory.Application.Commands.AddSerializedUnitCommand;
 
 public sealed class AddSerializedUnitCommandValidator : AbstractValidator<AddSerializedUnitCommand>

@@ -1,4 +1,3 @@
-// SharedKernel/Abstractions/Notifications/IEmailSender.cs — full replacement
 namespace DoubleStar.SharedKernel.Abstractions.Notifications;
 
 public interface IEmailSender

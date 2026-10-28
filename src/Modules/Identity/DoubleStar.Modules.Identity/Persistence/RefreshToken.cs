@@ -1,4 +1,3 @@
-// Persistence/RefreshToken.cs
 namespace DoubleStar.Modules.Identity.Persistence;
 
 public sealed class RefreshToken

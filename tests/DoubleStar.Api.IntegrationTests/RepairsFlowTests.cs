@@ -163,7 +163,12 @@ public sealed class RepairsFlowTests(DoubleStarApiFactory factory)
             $"/api/v1/repairtickets/{ticketId}/collect",
             (object?)null);
 
-        collectResponse.EnsureSuccessStatusCode();
+        var responseBody = await collectResponse.Content.ReadAsStringAsync();
+
+        collectResponse.IsSuccessStatusCode
+            .Should()
+            .BeTrue(
+                $"Collect endpoint returned {(int)collectResponse.StatusCode}: {responseBody}");
 
         using var scope = factory.Services.CreateScope();
 

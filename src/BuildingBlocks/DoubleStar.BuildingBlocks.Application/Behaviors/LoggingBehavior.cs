@@ -1,4 +1,3 @@
-// Behaviors/LoggingBehavior.cs
 using System.Diagnostics;
 using MediatR;
 using Microsoft.Extensions.Logging;

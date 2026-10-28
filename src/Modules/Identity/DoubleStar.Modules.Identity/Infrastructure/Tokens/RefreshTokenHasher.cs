@@ -1,4 +1,3 @@
-// Infrastructure/Tokens/RefreshTokenHasher.cs
 using System.Security.Cryptography;
 using System.Text;
 

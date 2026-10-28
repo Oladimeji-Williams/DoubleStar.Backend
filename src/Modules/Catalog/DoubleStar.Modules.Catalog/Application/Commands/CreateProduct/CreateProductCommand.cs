@@ -1,4 +1,3 @@
-// Application/Commands/CreateProductCommand/CreateProductCommand.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Catalog.Application.DTOs;
 

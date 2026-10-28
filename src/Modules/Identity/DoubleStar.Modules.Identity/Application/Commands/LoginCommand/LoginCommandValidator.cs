@@ -1,4 +1,3 @@
-// .../LoginCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.LoginCommand;
 
 public sealed class LoginCommandValidator : AbstractValidator<LoginCommand>

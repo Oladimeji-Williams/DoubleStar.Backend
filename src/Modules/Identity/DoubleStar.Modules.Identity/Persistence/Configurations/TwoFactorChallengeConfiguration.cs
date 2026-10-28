@@ -1,4 +1,3 @@
-// Identity/Persistence/Configurations/TwoFactorChallengeConfiguration.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DoubleStar.Modules.Identity.Infrastructure.Identity;

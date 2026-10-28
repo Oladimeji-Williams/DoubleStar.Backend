@@ -1,4 +1,3 @@
-// Infrastructure/Identity/ApplicationUser.cs
 
 using Microsoft.AspNetCore.Identity;
 

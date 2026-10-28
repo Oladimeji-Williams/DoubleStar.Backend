@@ -1,4 +1,3 @@
-// Reporting/Application/Queries/GetInventoryValuationQuery/GetInventoryValuationQueryHandler.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.SharedKernel.Contracts.Inventory;
 

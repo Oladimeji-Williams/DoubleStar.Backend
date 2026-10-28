@@ -1,4 +1,3 @@
-// Api/Contracts/CreateProductRequest.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 
 namespace DoubleStar.Modules.Catalog.Api.Contracts;

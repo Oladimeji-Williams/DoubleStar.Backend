@@ -1,4 +1,3 @@
-// Modules/Sales/Application/Mappings/SaleMappings.cs — full replacement
 using DoubleStar.Modules.Sales.Application.DTOs;
 using DoubleStar.Modules.Sales.Domain.Entities;
 

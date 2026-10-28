@@ -1,4 +1,3 @@
-// Api/Contracts/OpenRepairTicketRequest.cs
 namespace DoubleStar.Modules.Repairs.Api.Contracts;
 
 public sealed record OpenRepairTicketRequest(

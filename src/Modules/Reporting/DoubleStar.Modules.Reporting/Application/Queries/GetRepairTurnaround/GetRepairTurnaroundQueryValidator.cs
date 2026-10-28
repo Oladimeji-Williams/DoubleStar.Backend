@@ -1,4 +1,3 @@
-// .../GetRepairTurnaroundQueryValidator.cs
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetRepairTurnaroundQuery;
 
 public sealed class GetRepairTurnaroundQueryValidator : AbstractValidator<GetRepairTurnaroundQuery>

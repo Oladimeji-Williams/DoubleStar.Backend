@@ -1,4 +1,3 @@
-// .../AddSerializedUnitCommandHandler.cs
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 using DoubleStar.Modules.Inventory.Application.Errors;
 using DoubleStar.Modules.Inventory.Domain.Entities;

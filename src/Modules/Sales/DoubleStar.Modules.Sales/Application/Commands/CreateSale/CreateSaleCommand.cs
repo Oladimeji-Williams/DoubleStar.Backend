@@ -1,4 +1,3 @@
-// Application/Commands/CreateSaleCommand/CreateSaleCommand.cs
 using DoubleStar.Modules.Sales.Application.DTOs;
 
 namespace DoubleStar.Modules.Sales.Application.Commands.CreateSaleCommand;

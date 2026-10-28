@@ -1,4 +1,3 @@
-// SharedKernel/Contracts/Repairs/RepairStatusChangedEvent.cs
 using MediatR;
 
 namespace DoubleStar.SharedKernel.Contracts.Repairs;

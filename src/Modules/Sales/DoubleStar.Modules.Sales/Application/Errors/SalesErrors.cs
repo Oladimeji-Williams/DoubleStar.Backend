@@ -1,4 +1,3 @@
-// Application/Errors/SalesErrors.cs
 namespace DoubleStar.Modules.Sales.Application.Errors;
 
 public static class SalesErrors

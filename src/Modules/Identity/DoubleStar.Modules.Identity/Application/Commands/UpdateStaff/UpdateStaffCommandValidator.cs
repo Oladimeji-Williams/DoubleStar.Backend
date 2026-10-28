@@ -1,4 +1,3 @@
-// .../UpdateStaffCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.UpdateStaffCommand;
 
 public sealed class UpdateStaffCommandValidator : AbstractValidator<UpdateStaffCommand>

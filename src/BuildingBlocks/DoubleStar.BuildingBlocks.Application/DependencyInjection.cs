@@ -1,4 +1,3 @@
-// DependencyInjection.cs
 using System.Reflection;
 using FluentValidation;
 using MediatR;

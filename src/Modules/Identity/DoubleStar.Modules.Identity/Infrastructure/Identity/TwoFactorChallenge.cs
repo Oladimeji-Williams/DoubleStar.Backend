@@ -1,4 +1,3 @@
-// Identity/Infrastructure/Identity/TwoFactorChallenge.cs
 namespace DoubleStar.Modules.Identity.Infrastructure.Identity;
 
 public sealed class TwoFactorChallenge

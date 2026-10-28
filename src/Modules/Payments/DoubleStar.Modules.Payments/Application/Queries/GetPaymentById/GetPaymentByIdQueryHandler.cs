@@ -1,10 +1,9 @@
-// .../GetPaymentByIdQueryHandler.cs
 using DoubleStar.Modules.Payments.Application.Abstractions;
 using DoubleStar.Modules.Payments.Application.DTOs;
 using DoubleStar.Modules.Payments.Application.Errors;
 using DoubleStar.Modules.Payments.Application.Mappings;
 
-namespace DoubleStar.Modules.Payments.Application.Queries.GetPaymentByIdQuery;
+namespace DoubleStar.Modules.Payments.Application.Queries.GetPaymentById;
 
 public sealed class GetPaymentByIdQueryHandler(IPaymentTransactionRepository paymentTransactionRepository)
     : IRequestHandler<GetPaymentByIdQuery, Result<PaymentTransactionDto>>

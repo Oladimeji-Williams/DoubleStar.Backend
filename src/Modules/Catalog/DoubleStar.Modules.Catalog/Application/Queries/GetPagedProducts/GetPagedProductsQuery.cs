@@ -1,7 +1,9 @@
-// Catalog/Application/Queries/GetPagedProductsQuery/GetPagedProductsQuery.cs
-using DoubleStar.BuildingBlocks.Application.Common;
+using DoubleStar.BuildingBlocks.Application.Common.Queries.Pagination;
 using DoubleStar.Modules.Catalog.Application.DTOs;
 
-namespace DoubleStar.Modules.Catalog.Application.Queries.GetPagedProductsQuery;
+namespace DoubleStar.Modules.Catalog.Application.Queries.GetPagedProducts;
 
-public sealed record GetPagedProductsQuery(int Page, int PageSize) : IRequest<Result<PagedResult<ProductDto>>>;
+public sealed record GetPagedProductsQuery(
+    PagedQuery Query,
+    bool IncludeArchived = false)
+    : IRequest<Result<PagedResult<ProductDto>>>;

@@ -1,4 +1,3 @@
-// .../ChangePasswordCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.ChangePasswordCommand;
 
 public sealed class ChangePasswordCommandValidator : AbstractValidator<ChangePasswordCommand>

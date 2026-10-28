@@ -1,4 +1,3 @@
-// Contracts/Sales/ISalesHistory.cs
 namespace DoubleStar.SharedKernel.Contracts.Sales;
 
 public interface ISalesHistory

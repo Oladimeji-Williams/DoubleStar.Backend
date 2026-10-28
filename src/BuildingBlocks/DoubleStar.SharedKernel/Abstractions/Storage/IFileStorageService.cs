@@ -1,4 +1,3 @@
-// Abstractions/Storage/IFileStorageService.cs
 namespace DoubleStar.SharedKernel.Abstractions.Storage;
 
 public interface IFileStorageService

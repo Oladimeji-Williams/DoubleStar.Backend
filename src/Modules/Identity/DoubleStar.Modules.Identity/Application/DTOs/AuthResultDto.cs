@@ -1,4 +1,3 @@
-// Application/DTOs/AuthResultDto.cs
 namespace DoubleStar.Modules.Identity.Application.DTOs;
 
 public sealed record AuthResultDto(

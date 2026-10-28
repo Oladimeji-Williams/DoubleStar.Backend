@@ -1,4 +1,3 @@
-// .../RequestRepairCommandValidator.cs
 namespace DoubleStar.Modules.Repairs.Application.Commands.RequestRepairCommand;
 
 public sealed class RequestRepairCommandValidator : AbstractValidator<RequestRepairCommand>

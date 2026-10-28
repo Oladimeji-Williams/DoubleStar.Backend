@@ -1,4 +1,3 @@
-// .../OpenRepairTicketCommandValidator.cs
 namespace DoubleStar.Modules.Repairs.Application.Commands.OpenRepairTicketCommand;
 
 public sealed class OpenRepairTicketCommandValidator : AbstractValidator<OpenRepairTicketCommand>

@@ -1,4 +1,3 @@
-// .../SetProductImageCommandHandler.cs
 using DoubleStar.Modules.Catalog.Application.Abstractions;
 using DoubleStar.Modules.Catalog.Application.DTOs;
 using DoubleStar.Modules.Catalog.Application.Errors;

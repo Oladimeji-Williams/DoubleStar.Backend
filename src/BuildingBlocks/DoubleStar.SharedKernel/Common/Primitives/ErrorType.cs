@@ -1,4 +1,3 @@
-// Common/Primitives/ErrorType.cs
 namespace DoubleStar.SharedKernel.Common.Primitives;
 
 public enum ErrorType

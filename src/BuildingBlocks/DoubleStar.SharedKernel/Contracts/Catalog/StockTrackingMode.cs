@@ -1,4 +1,3 @@
-// Contracts/Catalog/StockTrackingMode.cs
 namespace DoubleStar.SharedKernel.Contracts.Catalog;
 
 public enum StockTrackingMode

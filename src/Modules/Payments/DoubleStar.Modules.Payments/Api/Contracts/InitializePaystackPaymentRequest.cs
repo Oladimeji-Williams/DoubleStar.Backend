@@ -1,4 +1,3 @@
-// Api/Contracts/InitializePaystackPaymentRequest.cs
 using DoubleStar.SharedKernel.Contracts.Payments;
 
 namespace DoubleStar.Modules.Payments.Api.Contracts;

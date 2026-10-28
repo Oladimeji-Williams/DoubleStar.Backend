@@ -1,4 +1,3 @@
-// Domain/Entities/NotificationLog.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.Modules.Notifications.Domain.Enums;
 

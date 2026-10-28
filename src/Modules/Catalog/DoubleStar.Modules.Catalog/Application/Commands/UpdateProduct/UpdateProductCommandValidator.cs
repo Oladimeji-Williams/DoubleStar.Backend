@@ -1,4 +1,3 @@
-// .../UpdateProductCommandValidator.cs
 namespace DoubleStar.Modules.Catalog.Application.Commands.UpdateProductCommand;
 
 public sealed class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>

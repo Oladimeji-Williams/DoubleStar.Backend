@@ -1,4 +1,3 @@
-// Catalog/Api/Controllers/SitemapController.cs
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

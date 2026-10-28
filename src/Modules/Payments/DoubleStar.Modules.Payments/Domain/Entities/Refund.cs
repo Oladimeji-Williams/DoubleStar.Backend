@@ -1,4 +1,3 @@
-// Domain/Entities/Refund.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Payments.Domain.Entities;

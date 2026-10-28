@@ -1,4 +1,3 @@
-// Domain/Entities/SaleLine.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Sales.Domain.Entities;

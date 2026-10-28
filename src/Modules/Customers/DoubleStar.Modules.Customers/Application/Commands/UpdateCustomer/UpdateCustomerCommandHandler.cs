@@ -1,4 +1,3 @@
-// .../UpdateCustomerCommandHandler.cs
 using DoubleStar.Modules.Customers.Application.Abstractions;
 using DoubleStar.Modules.Customers.Application.Errors;
 

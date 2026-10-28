@@ -1,4 +1,3 @@
-// SharedKernel/Contracts/Repairs/IRepairHistory.cs — replace the whole file
 namespace DoubleStar.SharedKernel.Contracts.Repairs;
 
 public interface IRepairHistory

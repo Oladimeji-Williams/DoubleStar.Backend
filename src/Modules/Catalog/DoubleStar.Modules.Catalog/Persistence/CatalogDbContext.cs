@@ -1,4 +1,3 @@
-// Persistence/CatalogDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Catalog.Domain.Entities;

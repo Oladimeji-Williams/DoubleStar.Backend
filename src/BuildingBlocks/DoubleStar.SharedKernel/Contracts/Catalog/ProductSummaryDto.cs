@@ -1,4 +1,10 @@
-// Contracts/Catalog/ProductSummaryDto.cs
 namespace DoubleStar.SharedKernel.Contracts.Catalog;
 
-public sealed record ProductSummaryDto(int Id, string Name, string Sku, long UnitPriceKobo, StockTrackingMode TrackingMode);
+public sealed record ProductSummaryDto(
+    int Id,
+    string Name,
+    string Sku,
+    long UnitPriceKobo,
+    StockTrackingMode TrackingMode,
+    bool IsArchived = false,
+    string? ImageUrl = null);
