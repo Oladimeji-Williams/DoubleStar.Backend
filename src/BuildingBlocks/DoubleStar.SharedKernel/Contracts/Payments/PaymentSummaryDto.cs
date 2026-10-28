@@ -1,4 +1,3 @@
-// Contracts/Payments/PaymentSummaryDto.cs
 namespace DoubleStar.SharedKernel.Contracts.Payments;
 
 public sealed record PaymentSummaryDto(

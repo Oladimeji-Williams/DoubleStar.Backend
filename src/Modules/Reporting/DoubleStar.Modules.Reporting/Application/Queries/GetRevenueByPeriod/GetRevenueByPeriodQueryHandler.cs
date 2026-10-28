@@ -1,4 +1,3 @@
-// .../GetRevenueByPeriodQueryHandler.cs
 using DoubleStar.SharedKernel.Contracts.Sales;
 
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetRevenueByPeriodQuery;

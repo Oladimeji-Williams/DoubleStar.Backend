@@ -1,4 +1,3 @@
-// Application/EventHandlers/RepairStatusChangedEventHandler.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 using DoubleStar.SharedKernel.Contracts.Repairs;
 using DoubleStar.Modules.Notifications.Application.Services;

@@ -1,4 +1,3 @@
-// SharedKernel/Contracts/Catalog/IProductCatalog.cs — replace the whole file
 namespace DoubleStar.SharedKernel.Contracts.Catalog;
 
 public interface IProductCatalog

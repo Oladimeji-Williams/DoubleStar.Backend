@@ -1,10 +1,9 @@
-// .../RecordManualPaymentCommandHandler.cs
 using DoubleStar.Modules.Payments.Application.Abstractions;
 using DoubleStar.Modules.Payments.Application.DTOs;
 using DoubleStar.Modules.Payments.Application.Mappings;
 using DoubleStar.Modules.Payments.Domain.Entities;
 
-namespace DoubleStar.Modules.Payments.Application.Commands.RecordManualPaymentCommand;
+namespace DoubleStar.Modules.Payments.Application.Commands.RecordManualPayment;
 
 public sealed class RecordManualPaymentCommandHandler(IPaymentTransactionRepository paymentTransactionRepository)
     : IRequestHandler<RecordManualPaymentCommand, Result<PaymentTransactionDto>>

@@ -1,4 +1,3 @@
-// Abstractions/Authentication/LoginOutcome.cs — full replacement
 namespace DoubleStar.SharedKernel.Abstractions.Authentication;
 
 public abstract record LoginOutcome

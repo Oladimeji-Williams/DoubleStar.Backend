@@ -1,4 +1,3 @@
-// SharedKernel/Domain/Entity.cs — replace the whole file
 namespace DoubleStar.SharedKernel.Domain;
 
 public abstract class Entity : IAuditable

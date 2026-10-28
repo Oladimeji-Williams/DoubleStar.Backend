@@ -1,4 +1,3 @@
-// Application/Abstractions/IStockMovementRepository.cs
 using DoubleStar.Modules.Inventory.Domain.Entities;
 
 namespace DoubleStar.Modules.Inventory.Application.Abstractions;

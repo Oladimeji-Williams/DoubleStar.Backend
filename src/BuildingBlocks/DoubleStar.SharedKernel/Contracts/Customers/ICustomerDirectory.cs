@@ -1,4 +1,3 @@
-// Contracts/Customers/ICustomerDirectory.cs
 namespace DoubleStar.SharedKernel.Contracts.Customers;
 
 public interface ICustomerDirectory

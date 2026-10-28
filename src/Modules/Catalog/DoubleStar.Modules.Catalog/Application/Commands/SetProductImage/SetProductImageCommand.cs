@@ -1,4 +1,3 @@
-// Modules/Catalog/Application/Commands/SetProductImageCommand/SetProductImageCommand.cs
 using DoubleStar.Modules.Catalog.Application.DTOs;
 
 namespace DoubleStar.Modules.Catalog.Application.Commands.SetProductImageCommand;

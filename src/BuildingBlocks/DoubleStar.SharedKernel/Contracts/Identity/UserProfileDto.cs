@@ -1,4 +1,3 @@
-// SharedKernel/Contracts/Identity/UserProfileDto.cs — full replacement
 namespace DoubleStar.SharedKernel.Contracts.Identity;
 
 public sealed record UserProfileDto(

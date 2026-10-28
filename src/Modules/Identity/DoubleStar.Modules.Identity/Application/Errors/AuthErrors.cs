@@ -1,4 +1,3 @@
-// Application/Errors/AuthErrors.cs
 namespace DoubleStar.Modules.Identity.Application.Errors;
 
 public static class AuthErrors

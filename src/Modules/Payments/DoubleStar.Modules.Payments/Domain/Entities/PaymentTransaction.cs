@@ -1,4 +1,3 @@
-// Domain/Entities/PaymentTransaction.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.SharedKernel.Contracts.Payments;
 using DoubleStar.Modules.Payments.Domain.Enums;

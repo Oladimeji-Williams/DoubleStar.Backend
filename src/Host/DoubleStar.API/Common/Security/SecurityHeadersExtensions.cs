@@ -1,4 +1,3 @@
-// SecurityHeadersExtensions.cs — full replacement
 namespace DoubleStar.Api.Common.Security;
 
 public static class SecurityHeadersExtensions

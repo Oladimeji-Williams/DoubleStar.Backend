@@ -1,4 +1,3 @@
-// CreateWalkInCustomerCommandHandlerTests.cs
 using DoubleStar.Modules.Customers.Application.Abstractions;
 using DoubleStar.Modules.Customers.Application.Commands.CreateWalkInCustomerCommand;
 using DoubleStar.Modules.Customers.Domain.Entities;

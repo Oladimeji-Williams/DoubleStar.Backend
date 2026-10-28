@@ -1,4 +1,3 @@
-// Behaviors/UnhandledExceptionBehavior.cs
 using MediatR;
 using Microsoft.Extensions.Logging;
 using DoubleStar.SharedKernel.Common.Primitives;

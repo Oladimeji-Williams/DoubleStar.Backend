@@ -1,4 +1,3 @@
-// .../GetRepairTurnaroundQueryHandler.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetRepairTurnaroundQuery;

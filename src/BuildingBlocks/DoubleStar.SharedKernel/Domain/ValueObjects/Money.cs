@@ -1,4 +1,3 @@
-// Domain/ValueObjects/Money.cs
 namespace DoubleStar.SharedKernel.Domain.ValueObjects;
 
 /// <summary>

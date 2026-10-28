@@ -1,4 +1,3 @@
-// .../RecordDiagnosisCommandValidator.cs
 namespace DoubleStar.Modules.Repairs.Application.Commands.RecordDiagnosisCommand;
 
 public sealed class RecordDiagnosisCommandValidator : AbstractValidator<RecordDiagnosisCommand>

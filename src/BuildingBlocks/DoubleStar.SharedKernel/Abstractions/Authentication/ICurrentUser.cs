@@ -1,4 +1,3 @@
-// Abstractions/Authentication/ICurrentUser.cs
 namespace DoubleStar.SharedKernel.Abstractions.Authentication;
 
 public interface ICurrentUser
@@ -13,4 +12,5 @@ public interface ICurrentUser
 
     /// <summary>True if the signed-in account is any staff role.</summary>
     bool IsStaff { get; }
+
 }

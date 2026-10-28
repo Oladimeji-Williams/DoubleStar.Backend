@@ -1,4 +1,3 @@
-// Contracts/Repairs/RepairStatus.cs
 namespace DoubleStar.SharedKernel.Contracts.Repairs;
 
 public enum RepairStatus

@@ -1,4 +1,3 @@
-// Application/Errors/PaymentErrors.cs
 namespace DoubleStar.Modules.Payments.Application.Errors;
 
 public static class PaymentErrors

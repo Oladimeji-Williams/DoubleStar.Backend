@@ -1,4 +1,3 @@
-// DependencyInjection.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +39,9 @@ public static class DependencyInjection
 
         services.AddScoped<IPaymentTransactionRepository, PaymentTransactionRepository>();
         services.AddScoped<IPaymentRecordReader, PaymentRecordReaderService>();
+        services.AddScoped<IPaymentAnalyticsReader, PaymentAnalyticsReaderService>();
+        services.AddScoped<IPaymentInitiator, PaymentInitiatorService>();
+        services.AddScoped<IPaymentVerifier, PaymentVerifierService>();
 
         return services;
     }

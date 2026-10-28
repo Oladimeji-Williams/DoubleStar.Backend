@@ -1,4 +1,3 @@
-// Persistence/RepairsDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Repairs.Domain.Entities;

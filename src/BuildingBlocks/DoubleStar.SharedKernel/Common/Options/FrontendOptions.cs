@@ -1,4 +1,3 @@
-// Common/Options/FrontendOptions.cs
 namespace DoubleStar.SharedKernel.Common.Options;
 
 public sealed class FrontendOptions

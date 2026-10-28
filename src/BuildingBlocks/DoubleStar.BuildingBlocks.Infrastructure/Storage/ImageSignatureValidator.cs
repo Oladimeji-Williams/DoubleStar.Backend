@@ -1,4 +1,3 @@
-// BuildingBlocks.Infrastructure/Storage/ImageSignatureValidator.cs
 namespace DoubleStar.BuildingBlocks.Infrastructure.Storage;
 
 internal static class ImageSignatureValidator

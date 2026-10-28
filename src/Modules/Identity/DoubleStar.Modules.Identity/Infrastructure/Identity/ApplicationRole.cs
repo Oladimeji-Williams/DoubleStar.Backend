@@ -1,4 +1,3 @@
-// Infrastructure/Identity/ApplicationRole.cs
 using Microsoft.AspNetCore.Identity;
 
 namespace DoubleStar.Modules.Identity.Infrastructure.Identity;

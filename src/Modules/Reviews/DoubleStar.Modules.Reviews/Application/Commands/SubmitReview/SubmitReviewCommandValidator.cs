@@ -1,5 +1,4 @@
-﻿// .../SubmitReviewCommandValidator.cs
-namespace DoubleStar.Modules.Reviews.Application.Commands.SubmitReviewCommand;
+﻿namespace DoubleStar.Modules.Reviews.Application.Commands.SubmitReviewCommand;
 
 public sealed class SubmitReviewCommandValidator : AbstractValidator<SubmitReviewCommand>
 {

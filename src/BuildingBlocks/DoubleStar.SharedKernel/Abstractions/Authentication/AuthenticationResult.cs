@@ -1,4 +1,3 @@
-// Abstractions/Authentication/AuthenticationResult.cs
 namespace DoubleStar.SharedKernel.Abstractions.Authentication;
 
 public sealed record AuthenticationResult(

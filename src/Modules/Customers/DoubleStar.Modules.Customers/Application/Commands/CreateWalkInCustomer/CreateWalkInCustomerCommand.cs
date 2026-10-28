@@ -1,4 +1,3 @@
-// Application/Commands/CreateWalkInCustomerCommand/CreateWalkInCustomerCommand.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 
 namespace DoubleStar.Modules.Customers.Application.Commands.CreateWalkInCustomerCommand;

@@ -1,31 +1,44 @@
-// RegisterCustomerCommandHandler.cs — full replacement
-using Microsoft.AspNetCore.Hosting;
+using DoubleStar.Modules.Identity.Application.Abstractions;
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.SharedKernel.Contracts.Identity;
-using DoubleStar.Modules.Identity.Infrastructure.Turnstile;
-using Microsoft.Extensions.Hosting;
 
 namespace DoubleStar.Modules.Identity.Application.Commands.RegisterCustomerCommand;
 
 public sealed class RegisterCustomerCommandHandler(
-    IIdentityService identityService, ITurnstileVerifier turnstileVerifier, IWebHostEnvironment environment, IPublisher publisher)
-    : IRequestHandler<RegisterCustomerCommand, Result<Guid>>
+    IIdentityService identityService,
+    IHumanVerifier humanVerifier,
+    IPublisher publisher)
+    : IRequestHandler<RegisterCustomerCommand, Result<RegistrationOutcome>>
 {
-    public async Task<Result<Guid>> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
+    public async Task<Result<RegistrationOutcome>> Handle(
+        RegisterCustomerCommand request,
+        CancellationToken cancellationToken)
     {
-        if (!environment.IsEnvironment("Testing"))
+        if (!await humanVerifier.VerifyAsync(request.TurnstileToken, cancellationToken))
         {
-            if (!await turnstileVerifier.VerifyAsync(request.TurnstileToken, cancellationToken))
-            {
-                return Result<Guid>.Failure(new Error("Verification.Required", "Please complete the verification step.", ErrorType.Validation));
-            }
+            return Result<RegistrationOutcome>.Failure(
+                new Error(
+                    "Verification.Required",
+                    "Please complete the verification step.",
+                    ErrorType.Validation));
         }
 
-        var result = await identityService.RegisterCustomerAsync(request.Email, request.Password, cancellationToken);
-        if (result.IsSuccess)
+        var result = await identityService.RegisterCustomerAsync(
+            request.Email,
+            request.Password,
+            cancellationToken);
+
+        if (result.IsFailure)
         {
-            await publisher.Publish(new CustomerAccountRegisteredEvent(result.Value, request.Email), cancellationToken);
+            return result;
         }
+
+        // Registration succeeded even if the confirmation email failed, so the event must
+        // still be published: the Customers module creates its Customer record from it.
+        await publisher.Publish(
+            new CustomerAccountRegisteredEvent(result.Value!.UserId, result.Value.Email),
+            cancellationToken);
+
         return result;
     }
 }

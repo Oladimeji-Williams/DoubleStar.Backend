@@ -1,4 +1,3 @@
-// .../UpdateCustomerCommandValidator.cs
 namespace DoubleStar.Modules.Customers.Application.Commands.UpdateCustomerCommand;
 
 public sealed class UpdateCustomerCommandValidator : AbstractValidator<UpdateCustomerCommand>

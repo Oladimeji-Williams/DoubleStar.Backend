@@ -1,4 +1,3 @@
-// .../RestockBulkCommandValidator.cs
 namespace DoubleStar.Modules.Inventory.Application.Commands.RestockBulkCommand;
 
 public sealed class RestockBulkCommandValidator : AbstractValidator<RestockBulkCommand>

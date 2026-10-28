@@ -1,4 +1,3 @@
-// Application/CrossModule/SalesHistoryService.cs
 using DoubleStar.SharedKernel.Contracts.Sales;
 using DoubleStar.Modules.Sales.Application.Abstractions;
 
@@ -19,7 +18,19 @@ public sealed class SalesHistoryService(ISaleRepository saleRepository) : ISales
         var sales = await saleRepository.GetAllInRangeAsync(fromUtc, toUtc, cancellationToken);
         return sales.Select(ToSummary).ToList();
     }
+    private static SaleSummaryDto ToSummary(
+        Domain.Entities.Sale sale)
+    {
+        if (sale.CompletedAtUtc is null)
+        {
+            throw new InvalidOperationException(
+                $"Completed sale '{sale.Id}' has no completion timestamp.");
+        }
 
-    private static SaleSummaryDto ToSummary(Domain.Entities.Sale sale) =>
-        new(sale.Id, sale.CustomerId, sale.TotalKobo, sale.CreatedAt);
+        return new SaleSummaryDto(
+            sale.Id,
+            sale.CustomerId,
+            sale.TotalKobo,
+            sale.CompletedAtUtc.Value);
+    }
 }

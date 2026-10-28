@@ -1,4 +1,3 @@
-// StockItemTests.cs
 using DoubleStar.Modules.Inventory.Domain.Entities;
 
 namespace DoubleStar.Modules.Inventory.Tests;

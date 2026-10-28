@@ -1,4 +1,3 @@
-// Application/Commands/OpenRepairTicketCommand/OpenRepairTicketCommand.cs
 using DoubleStar.Modules.Repairs.Application.DTOs;
 
 namespace DoubleStar.Modules.Repairs.Application.Commands.OpenRepairTicketCommand;

@@ -1,6 +1,8 @@
-// Application/Queries/GetAllTicketsQuery/GetAllTicketsQuery.cs
+using DoubleStar.BuildingBlocks.Application.Common.Queries.Pagination;
 using DoubleStar.Modules.Repairs.Application.DTOs;
 
-namespace DoubleStar.Modules.Repairs.Application.Queries.GetAllTicketsQuery;
+namespace DoubleStar.Modules.Repairs.Application.Queries.GetAllTickets;
 
-public sealed record GetAllTicketsQuery : IRequest<Result<IReadOnlyList<RepairTicketDto>>>;
+public sealed record GetAllTicketsQuery(
+    PagedQuery Query)
+    : IRequest<Result<PagedResult<RepairTicketDto>>>;

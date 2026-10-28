@@ -1,4 +1,3 @@
-// Infrastructure/Sms/TermiiSmsSender.cs
 using System.Net.Http.Json;
 using Microsoft.Extensions.Options;
 using DoubleStar.SharedKernel.Abstractions.Notifications;

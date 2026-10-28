@@ -1,4 +1,3 @@
-// Application/Errors/CustomerErrors.cs
 namespace DoubleStar.Modules.Customers.Application.Errors;
 
 public static class CustomerErrors

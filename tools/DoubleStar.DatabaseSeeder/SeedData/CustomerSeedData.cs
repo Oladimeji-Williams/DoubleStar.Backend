@@ -1,5 +1,4 @@
-﻿// SeedData/CustomerSeedData.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Customers.Domain.Entities;
 using DoubleStar.Modules.Customers.Persistence;
 

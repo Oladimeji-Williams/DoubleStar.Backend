@@ -1,5 +1,4 @@
-﻿// Modules/Reviews/Application/Errors/ReviewErrors.cs
-using DoubleStar.SharedKernel.Common.Primitives;
+﻿using DoubleStar.SharedKernel.Common.Primitives;
 
 namespace DoubleStar.Modules.Reviews.Application.Errors;
 

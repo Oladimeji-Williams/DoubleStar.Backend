@@ -1,4 +1,3 @@
-// Domain/Entities/RepairPart.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Repairs.Domain.Entities;

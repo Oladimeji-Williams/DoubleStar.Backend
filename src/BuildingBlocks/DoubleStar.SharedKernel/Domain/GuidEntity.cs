@@ -1,4 +1,3 @@
-// SharedKernel/Domain/GuidEntity.cs
 namespace DoubleStar.SharedKernel.Domain;
 
 public abstract class GuidEntity : IAuditable

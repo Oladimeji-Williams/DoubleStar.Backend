@@ -1,4 +1,3 @@
-// Application/Errors/CatalogErrors.cs
 namespace DoubleStar.Modules.Catalog.Application.Errors;
 
 public static class CatalogErrors

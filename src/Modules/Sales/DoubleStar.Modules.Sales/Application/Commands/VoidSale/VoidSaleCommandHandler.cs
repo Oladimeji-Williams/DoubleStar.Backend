@@ -1,4 +1,3 @@
-// .../VoidSaleCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Inventory;
 using DoubleStar.Modules.Sales.Application.Abstractions;
 using DoubleStar.Modules.Sales.Application.Errors;

@@ -1,4 +1,3 @@
-// Application/Commands/RegisterStaffCommand/RegisterStaffCommand.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.RegisterStaffCommand;
 
 public sealed record RegisterStaffCommand(

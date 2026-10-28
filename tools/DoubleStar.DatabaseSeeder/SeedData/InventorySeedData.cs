@@ -1,5 +1,4 @@
-﻿// SeedData/InventorySeedData.cs
-using DoubleStar.Modules.Inventory.Domain.Entities;
+﻿using DoubleStar.Modules.Inventory.Domain.Entities;
 using DoubleStar.Modules.Inventory.Persistence;
 
 namespace DoubleStar.DatabaseSeeder.SeedData;

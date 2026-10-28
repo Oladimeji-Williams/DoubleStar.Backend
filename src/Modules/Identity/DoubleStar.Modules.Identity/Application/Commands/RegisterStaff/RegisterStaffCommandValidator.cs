@@ -1,4 +1,3 @@
-// .../RegisterStaffCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.RegisterStaffCommand;
 
 public sealed class RegisterStaffCommandValidator : AbstractValidator<RegisterStaffCommand>

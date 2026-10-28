@@ -1,4 +1,3 @@
-// .../SendSaleReceiptCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Customers;
 using DoubleStar.Modules.Notifications.Application.Services;
 using DoubleStar.Modules.Notifications.Application.Templates;

@@ -1,4 +1,3 @@
-// tests/Modules/DoubleStar.Modules.Repairs.Tests/RepairTicketTests.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Repairs;
 using DoubleStar.Modules.Repairs.Domain.Entities;
 

@@ -1,4 +1,3 @@
-// Domain/Entities/Category.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Catalog.Domain.Entities;

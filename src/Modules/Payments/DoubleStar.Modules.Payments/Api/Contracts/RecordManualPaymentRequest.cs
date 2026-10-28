@@ -1,4 +1,3 @@
-// Api/Contracts/RecordManualPaymentRequest.cs
 using DoubleStar.SharedKernel.Contracts.Payments;
 using DoubleStar.Modules.Payments.Domain.Enums;
 

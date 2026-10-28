@@ -1,4 +1,3 @@
-// Modules/Sales/Application/Mappings/SaleLineEnricher.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Sales.Application.DTOs;
 

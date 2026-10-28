@@ -1,4 +1,3 @@
-// Application/Queries/GetSaleByIdQuery/GetSaleByIdQueryHandler.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Sales.Application.Abstractions;
 using DoubleStar.Modules.Sales.Application.DTOs;

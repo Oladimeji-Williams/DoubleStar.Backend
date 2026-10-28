@@ -1,4 +1,3 @@
-// Persistence/Configurations/RepairTicketConfiguration.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DoubleStar.Modules.Repairs.Domain.Entities;

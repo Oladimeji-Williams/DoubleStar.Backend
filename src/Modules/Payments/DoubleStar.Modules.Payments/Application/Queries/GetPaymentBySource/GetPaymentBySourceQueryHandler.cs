@@ -1,9 +1,8 @@
-// .../GetPaymentsBySourceQueryHandler.cs
 using DoubleStar.Modules.Payments.Application.Abstractions;
 using DoubleStar.Modules.Payments.Application.DTOs;
 using DoubleStar.Modules.Payments.Application.Mappings;
 
-namespace DoubleStar.Modules.Payments.Application.Queries.GetPaymentsBySourceQuery;
+namespace DoubleStar.Modules.Payments.Application.Queries.GetPaymentsBySource;
 
 public sealed class GetPaymentsBySourceQueryHandler(IPaymentTransactionRepository paymentTransactionRepository)
     : IRequestHandler<GetPaymentsBySourceQuery, Result<IReadOnlyList<PaymentTransactionDto>>>

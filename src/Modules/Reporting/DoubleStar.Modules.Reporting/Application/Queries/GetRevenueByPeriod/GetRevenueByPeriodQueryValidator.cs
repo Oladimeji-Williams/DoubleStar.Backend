@@ -1,4 +1,3 @@
-// .../GetRevenueByPeriodQueryValidator.cs
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetRevenueByPeriodQuery;
 
 public sealed class GetRevenueByPeriodQueryValidator : AbstractValidator<GetRevenueByPeriodQuery>

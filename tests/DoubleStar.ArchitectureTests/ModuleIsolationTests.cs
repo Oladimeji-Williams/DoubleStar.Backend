@@ -1,4 +1,3 @@
-// ModuleIsolationTests.cs
 using System.Reflection;
 using NetArchTest.Rules;
 

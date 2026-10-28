@@ -1,4 +1,3 @@
-// Application/DTOs/SaleDto.cs
 using DoubleStar.Modules.Sales.Domain.Enums;
 namespace DoubleStar.Modules.Sales.Application.DTOs;
 

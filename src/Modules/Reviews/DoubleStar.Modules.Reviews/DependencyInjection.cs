@@ -1,5 +1,4 @@
-﻿// Modules/Reviews/DependencyInjection.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DoubleStar.Modules.Reviews.Application.Abstractions;

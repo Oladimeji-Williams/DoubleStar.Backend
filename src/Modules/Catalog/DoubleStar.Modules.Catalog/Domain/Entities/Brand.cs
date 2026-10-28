@@ -1,4 +1,3 @@
-// Domain/Entities/Brand.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Catalog.Domain.Entities;

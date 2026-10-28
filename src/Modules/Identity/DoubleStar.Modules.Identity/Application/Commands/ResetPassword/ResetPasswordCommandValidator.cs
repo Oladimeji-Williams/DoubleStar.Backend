@@ -1,4 +1,3 @@
-// .../ResetPasswordCommandValidator.cs
 namespace DoubleStar.Modules.Identity.Application.Commands.ResetPasswordCommand;
 
 public sealed class ResetPasswordCommandValidator : AbstractValidator<ResetPasswordCommand>

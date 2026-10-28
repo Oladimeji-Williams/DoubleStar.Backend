@@ -1,14 +1,17 @@
-// Api/Controllers/PaymentsController.cs
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DoubleStar.BuildingBlocks.Infrastructure.Api;
 using DoubleStar.SharedKernel.Contracts.Payments;
 using DoubleStar.Modules.Payments.Api.Contracts;
-using DoubleStar.Modules.Payments.Application.Commands.InitializePaystackPaymentCommand;
-using DoubleStar.Modules.Payments.Application.Commands.RecordManualPaymentCommand;
-using DoubleStar.Modules.Payments.Application.Commands.RefundPaymentCommand;
-using DoubleStar.Modules.Payments.Application.Queries.GetPaymentByIdQuery;
-using DoubleStar.Modules.Payments.Application.Queries.GetPaymentsBySourceQuery;
+using DoubleStar.Modules.Payments.Application.Commands.InitializePaystackPayment;
+using DoubleStar.Modules.Payments.Application.Commands.RecordManualPayment;
+using DoubleStar.Modules.Payments.Application.Commands.RefundPayment;
+using DoubleStar.Modules.Payments.Application.Queries.GetPaymentById;
+using DoubleStar.Modules.Payments.Application.Queries.GetPaymentsBySource;
+using DoubleStar.Modules.Payments.Application.Queries.GetPagedPayments;
+using System.Text.Json;
+using DoubleStar.BuildingBlocks.Application.Common.Queries.Filtering;
+using DoubleStar.BuildingBlocks.Application.Common.Queries.Pagination;
 
 namespace DoubleStar.Modules.Payments.Api.Controllers;
 
@@ -54,5 +57,49 @@ public sealed class PaymentsController(ISender sender) : V1ControllerBase
     {
         var result = await sender.Send(new GetPaymentsBySourceQuery(sourceType, sourceId), cancellationToken);
         return result.IsFailure ? Failure(result) : Success(result.Value);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetPaged(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 25,
+        [FromQuery] string? search = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] bool sortDescending = false,
+        [FromQuery] string? filters = null,
+        CancellationToken cancellationToken = default)
+    {
+        IReadOnlyList<FilterCriterion>? parsedFilters = null;
+
+        if (!string.IsNullOrWhiteSpace(filters))
+        {
+            try
+            {
+                parsedFilters =
+                    JsonSerializer.Deserialize<List<FilterCriterion>>(
+                        filters);
+            }
+            catch (JsonException)
+            {
+                return BadRequest("Invalid filters.");
+            }
+        }
+
+        var query = new PagedQuery(
+            Page: page,
+            PageSize: pageSize,
+            Search: search,
+            SortBy: sortBy,
+            SortDescending: sortDescending,
+            Filters: parsedFilters);
+
+        var result =
+            await sender.Send(
+                new GetPagedPaymentsQuery(query),
+                cancellationToken);
+
+        return result.IsFailure
+            ? Failure(result)
+            : Success(result.Value);
     }
 }

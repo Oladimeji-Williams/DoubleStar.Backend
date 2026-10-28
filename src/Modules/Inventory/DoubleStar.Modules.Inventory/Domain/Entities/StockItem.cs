@@ -1,4 +1,3 @@
-// Domain/Entities/StockItem.cs
 using DoubleStar.SharedKernel.Domain;
 
 namespace DoubleStar.Modules.Inventory.Domain.Entities;
@@ -53,6 +52,24 @@ public sealed class StockItem : Entity
         if (QuantityOnHand < quantity) return false;
         QuantityOnHand -= quantity;
         QuantityReserved = Math.Max(0, QuantityReserved - quantity);
+        return true;
+    }
+    public bool TryConsumeReservation(int quantity)
+    {
+        if (quantity <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(quantity));
+        }
+
+        // A checkout must not consume stock that it did not reserve.
+        if (QuantityReserved < quantity || QuantityOnHand < quantity)
+        {
+            return false;
+        }
+
+        QuantityOnHand -= quantity;
+        QuantityReserved -= quantity;
+
         return true;
     }
 }

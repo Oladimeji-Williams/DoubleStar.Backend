@@ -1,4 +1,3 @@
-// Persistence/InventoryDbContext.cs
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DoubleStar.Modules.Inventory.Domain.Entities;

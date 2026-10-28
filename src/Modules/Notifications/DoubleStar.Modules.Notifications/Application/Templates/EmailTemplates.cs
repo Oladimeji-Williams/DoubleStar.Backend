@@ -1,5 +1,3 @@
-// Modules/Notifications/Application/Templates/EmailTemplates.cs — full replacement
-using DoubleStar.Modules.Notifications.Infrastructure.Email;
 using DoubleStar.SharedKernel.Contracts.Repairs;
 
 namespace DoubleStar.Modules.Notifications.Application.Templates;

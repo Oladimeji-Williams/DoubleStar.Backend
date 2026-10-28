@@ -1,4 +1,3 @@
-// Application/CrossModule/StockLevelReaderService.cs
 using DoubleStar.SharedKernel.Contracts.Inventory;
 using DoubleStar.Modules.Inventory.Application.Abstractions;
 

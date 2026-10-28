@@ -1,4 +1,3 @@
-// .../GetSalesSummaryQueryValidator.cs
 namespace DoubleStar.Modules.Reporting.Application.Queries.GetSalesSummaryQuery;
 
 public sealed class GetSalesSummaryQueryValidator : AbstractValidator<GetSalesSummaryQuery>

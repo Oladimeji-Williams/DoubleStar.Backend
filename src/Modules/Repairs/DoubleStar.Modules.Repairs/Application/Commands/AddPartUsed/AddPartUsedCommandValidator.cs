@@ -1,4 +1,3 @@
-// .../AddPartUsedCommandValidator.cs
 namespace DoubleStar.Modules.Repairs.Application.Commands.AddPartUsedCommand;
 
 public sealed class AddPartUsedCommandValidator : AbstractValidator<AddPartUsedCommand>

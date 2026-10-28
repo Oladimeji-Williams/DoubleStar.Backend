@@ -1,4 +1,3 @@
-// DomainPurityTests.cs
 using System.Reflection;
 using NetArchTest.Rules;
 

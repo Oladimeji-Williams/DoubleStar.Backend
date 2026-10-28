@@ -1,5 +1,4 @@
-﻿// Modules/Reviews/Application/Commands/SubmitReviewCommand/SubmitReviewCommand.cs
-using DoubleStar.Modules.Reviews.Application.DTOs;
+﻿using DoubleStar.Modules.Reviews.Application.DTOs;
 
 namespace DoubleStar.Modules.Reviews.Application.Commands.SubmitReviewCommand;
 

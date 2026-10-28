@@ -1,4 +1,3 @@
-// Domain/Entities/Product.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.SharedKernel.Contracts.Catalog;
 

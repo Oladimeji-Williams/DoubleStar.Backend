@@ -1,4 +1,3 @@
-// Abstractions/Authentication/ITokenService.cs
 namespace DoubleStar.SharedKernel.Abstractions.Authentication;
 
 public interface ITokenService

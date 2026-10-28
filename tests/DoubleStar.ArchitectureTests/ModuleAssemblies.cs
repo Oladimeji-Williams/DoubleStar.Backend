@@ -1,4 +1,3 @@
-// ModuleAssemblies.cs
 using System.Reflection;
 
 namespace DoubleStar.ArchitectureTests;
@@ -16,6 +15,8 @@ public static class ModuleAssemblies
         { "Payments", typeof(DoubleStar.Modules.Payments.AssemblyMarker).Assembly },
         { "Notifications", typeof(DoubleStar.Modules.Notifications.AssemblyMarker).Assembly },
         { "Reporting", typeof(DoubleStar.Modules.Reporting.AssemblyMarker).Assembly },
+        { "Reviews", typeof(DoubleStar.Modules.Reviews.AssemblyMarker).Assembly },
+        { "Orders", typeof(DoubleStar.Modules.Orders.AssemblyMarker).Assembly },
     };
 
     public static readonly string[] AllNamespaces =
@@ -29,5 +30,7 @@ public static class ModuleAssemblies
         "DoubleStar.Modules.Payments",
         "DoubleStar.Modules.Notifications",
         "DoubleStar.Modules.Reporting",
+        "DoubleStar.Modules.Reviews",
+        "DoubleStar.Modules.Orders",
     ];
 }

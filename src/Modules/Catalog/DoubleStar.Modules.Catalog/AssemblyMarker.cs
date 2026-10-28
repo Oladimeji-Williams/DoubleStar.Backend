@@ -1,4 +1,3 @@
-﻿// AssemblyMarker.cs
-namespace DoubleStar.Modules.Catalog;
+﻿namespace DoubleStar.Modules.Catalog;
 
 public static class AssemblyMarker;

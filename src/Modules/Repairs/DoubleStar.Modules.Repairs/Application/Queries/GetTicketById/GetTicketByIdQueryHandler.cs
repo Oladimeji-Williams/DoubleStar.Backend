@@ -1,4 +1,3 @@
-// Application/Queries/GetTicketByIdQuery/GetTicketByIdQueryHandler.cs — full replacement
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Repairs.Application.Abstractions;
 using DoubleStar.Modules.Repairs.Application.DTOs;

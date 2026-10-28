@@ -1,4 +1,3 @@
-// .../CollectDeviceCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 using DoubleStar.Modules.Repairs.Application.Abstractions;
 using DoubleStar.Modules.Repairs.Application.Errors;

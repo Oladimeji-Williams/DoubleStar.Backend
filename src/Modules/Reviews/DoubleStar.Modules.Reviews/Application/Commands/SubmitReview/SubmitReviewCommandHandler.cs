@@ -1,5 +1,4 @@
-﻿// .../SubmitReviewCommandHandler.cs
-using DoubleStar.SharedKernel.Abstractions.Authentication;
+﻿using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.Modules.Reviews.Application.Abstractions;
 using DoubleStar.Modules.Reviews.Application.DTOs;
 using DoubleStar.Modules.Reviews.Application.Mappings;

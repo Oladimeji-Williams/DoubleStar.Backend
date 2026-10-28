@@ -1,4 +1,3 @@
-// SaleTests.cs
 using DoubleStar.Modules.Sales.Domain.Entities;
 
 namespace DoubleStar.Modules.Sales.Tests;

@@ -1,4 +1,3 @@
-// Infrastructure/Paystack/PaystackOptions.cs
 namespace DoubleStar.Modules.Payments.Infrastructure.Paystack;
 
 public sealed class PaystackOptions

@@ -1,4 +1,3 @@
-// Catalog/Application/Queries/GetArchivedProductsQuery/GetArchivedProductsQuery.cs
 using DoubleStar.Modules.Catalog.Application.DTOs;
 
 namespace DoubleStar.Modules.Catalog.Application.Queries.GetArchivedProductsQuery;

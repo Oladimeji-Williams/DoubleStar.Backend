@@ -1,4 +1,3 @@
-// .../AddSaleLineCommandHandler.cs
 using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.SharedKernel.Contracts.Inventory;
 using DoubleStar.Modules.Sales.Application.Abstractions;

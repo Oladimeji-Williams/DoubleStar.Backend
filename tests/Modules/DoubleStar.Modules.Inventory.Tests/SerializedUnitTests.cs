@@ -1,4 +1,3 @@
-// SerializedUnitTests.cs
 using DoubleStar.Modules.Inventory.Domain.Entities;
 using DoubleStar.Modules.Inventory.Domain.Enums;
 

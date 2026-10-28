@@ -1,4 +1,3 @@
-// .../RefreshTokenCommandHandler.cs
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.Modules.Identity.Application.Errors;
 using DoubleStar.Modules.Identity.Application.Mappings;

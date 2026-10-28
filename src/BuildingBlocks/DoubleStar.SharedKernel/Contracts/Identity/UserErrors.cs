@@ -1,4 +1,3 @@
-// Contracts/Identity/UserErrors.cs
 using DoubleStar.SharedKernel.Common.Primitives;
 
 namespace DoubleStar.SharedKernel.Contracts.Identity;

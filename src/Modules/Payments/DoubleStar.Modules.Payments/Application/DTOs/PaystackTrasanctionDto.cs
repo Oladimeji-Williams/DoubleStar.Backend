@@ -1,4 +1,3 @@
-// Application/DTOs/PaymentTransactionDto.cs
 using DoubleStar.SharedKernel.Contracts.Payments;
 
 namespace DoubleStar.Modules.Payments.Application.DTOs;

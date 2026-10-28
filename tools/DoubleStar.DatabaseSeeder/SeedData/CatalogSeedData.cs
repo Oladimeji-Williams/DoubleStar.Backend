@@ -1,5 +1,4 @@
-﻿// SeedData/CatalogSeedData.cs
-using DoubleStar.SharedKernel.Contracts.Catalog;
+﻿using DoubleStar.SharedKernel.Contracts.Catalog;
 using DoubleStar.Modules.Catalog.Domain.Entities;
 using DoubleStar.Modules.Catalog.Persistence;
 

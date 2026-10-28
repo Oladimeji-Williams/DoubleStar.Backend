@@ -1,5 +1,4 @@
-﻿// tests/DoubleStar.Api.IntegrationTests/DoubleStarApiFactory.cs
-
+﻿
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +17,10 @@ using DoubleStar.Modules.Sales.Persistence;
 using DoubleStar.Modules.Repairs.Persistence;
 using DoubleStar.Modules.Payments.Persistence;
 using DoubleStar.Modules.Notifications.Persistence;
+using DoubleStar.Modules.Orders.Persistence;
+using DoubleStar.Modules.Reviews.Persistence;
+using DoubleStar.SharedKernel.Abstractions.Payments;
+
 
 using DoubleStar.SharedKernel.Abstractions.Notifications;
 
@@ -63,6 +66,13 @@ public sealed class DoubleStarApiFactory
 
         await sp.GetRequiredService<NotificationsDbContext>()
             .Database.MigrateAsync();
+
+        await sp.GetRequiredService<ReviewsDbContext>()
+            .Database.MigrateAsync();
+
+        await sp.GetRequiredService<OrdersDbContext>()
+            .Database.MigrateAsync();
+
     }
 
     async Task IAsyncLifetime.DisposeAsync()
@@ -155,6 +165,9 @@ public sealed class DoubleStarApiFactory
              * the test implementation.
              */
             services.RemoveAll<IEmailSender>();
+            services.RemoveAll<IPaymentGateway>();
+            services.AddSingleton<FakePaymentGateway>();
+            services.AddSingleton<IPaymentGateway>(sp => sp.GetRequiredService<FakePaymentGateway>());
             services.RemoveAll<ISmsSender>();
             services.AddSingleton<IEmailSender, FakeEmailSender>();
             services.AddSingleton<ISmsSender, FakeSmsSender>();

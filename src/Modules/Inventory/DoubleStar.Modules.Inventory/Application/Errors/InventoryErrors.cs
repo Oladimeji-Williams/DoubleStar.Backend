@@ -1,4 +1,3 @@
-// Application/Errors/InventoryErrors.cs
 namespace DoubleStar.Modules.Inventory.Application.Errors;
 
 public static class InventoryErrors

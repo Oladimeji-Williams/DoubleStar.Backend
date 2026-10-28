@@ -1,4 +1,3 @@
-// Infrastructure/Tokens/JwtOptions.cs
 namespace DoubleStar.Modules.Identity.Infrastructure.Tokens;
 
 public sealed class JwtOptions

@@ -1,4 +1,3 @@
-// Domain/Entities/StockMovement.cs
 using DoubleStar.SharedKernel.Domain;
 using DoubleStar.Modules.Inventory.Domain.Enums;
 

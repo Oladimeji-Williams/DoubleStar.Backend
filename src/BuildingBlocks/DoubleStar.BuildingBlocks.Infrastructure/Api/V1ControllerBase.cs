@@ -1,4 +1,3 @@
-// Api/V1ControllerBase.cs
 using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

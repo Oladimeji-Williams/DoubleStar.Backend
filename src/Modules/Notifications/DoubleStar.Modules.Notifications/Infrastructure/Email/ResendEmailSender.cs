@@ -1,4 +1,3 @@
-// Infrastructure/Email/ResendEmailSender.cs
 using Microsoft.Extensions.Options;
 using Resend;
 using DoubleStar.SharedKernel.Abstractions.Notifications;

@@ -1,4 +1,3 @@
-// .../RequestRepairCommandHandler.cs
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.SharedKernel.Contracts.Identity;
 using DoubleStar.Modules.Repairs.Application.Abstractions;

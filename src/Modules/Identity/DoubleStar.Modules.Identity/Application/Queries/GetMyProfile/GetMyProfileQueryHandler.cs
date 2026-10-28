@@ -1,4 +1,3 @@
-// .../GetMyProfileQueryHandler.cs
 using DoubleStar.SharedKernel.Abstractions.Authentication;
 using DoubleStar.SharedKernel.Contracts.Identity;
 

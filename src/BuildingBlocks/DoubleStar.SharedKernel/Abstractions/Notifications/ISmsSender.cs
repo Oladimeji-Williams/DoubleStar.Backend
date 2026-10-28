@@ -1,4 +1,3 @@
-// Abstractions/Notifications/ISmsSender.cs
 namespace DoubleStar.SharedKernel.Abstractions.Notifications;
 
 public interface ISmsSender

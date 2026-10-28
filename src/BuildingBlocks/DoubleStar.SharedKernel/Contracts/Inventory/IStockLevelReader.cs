@@ -1,4 +1,3 @@
-// SharedKernel/Contracts/Inventory/IStockLevelReader.cs — replace the whole file
 namespace DoubleStar.SharedKernel.Contracts.Inventory;
 
 public interface IStockLevelReader

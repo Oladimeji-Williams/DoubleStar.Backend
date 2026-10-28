@@ -1,4 +1,3 @@
-// Authentication/CurrentUser.cs
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
@@ -28,4 +27,5 @@ internal sealed class CurrentUser(IHttpContextAccessor httpContextAccessor) : IC
     public bool IsInRole(string role) => Roles.Contains(role);
     public bool IsCustomer => Roles.Contains("Customer");
     public bool IsStaff => Roles.Any(StaffRoles.Contains);
+    
 }

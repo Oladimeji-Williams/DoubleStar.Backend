@@ -1,4 +1,3 @@
-// .../AssignTechnicianCommandHandler.cs
 using DoubleStar.Modules.Repairs.Application.Abstractions;
 using DoubleStar.Modules.Repairs.Application.Errors;
 

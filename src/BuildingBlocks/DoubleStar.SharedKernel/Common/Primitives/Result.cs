@@ -1,4 +1,3 @@
-// Common/Primitives/Result.cs
 namespace DoubleStar.SharedKernel.Common.Primitives;
 
 public sealed class Result

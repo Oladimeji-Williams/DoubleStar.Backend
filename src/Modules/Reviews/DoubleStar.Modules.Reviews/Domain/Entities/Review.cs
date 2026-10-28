@@ -1,5 +1,4 @@
-﻿// Modules/Reviews/Domain/Entities/Review.cs
-using DoubleStar.SharedKernel.Domain;
+﻿using DoubleStar.SharedKernel.Domain;
 using DoubleStar.Modules.Reviews.Domain.Enums;
 
 namespace DoubleStar.Modules.Reviews.Domain.Entities;
@@ -11,6 +10,12 @@ public sealed class Review : GuidEntity
     public int Rating { get; private set; }
     public string Comment { get; private set; } = string.Empty;
     public ReviewStatus Status { get; private set; }
+    public Guid? ApprovedByUserId { get; private set; }
+    public DateTime? ApprovedAtUtc { get; private set; }
+    public Guid? RejectedByUserId { get; private set; }
+    public DateTime? RejectedAtUtc { get; private set; }
+    public Guid? DeletedByUserId { get; private set; }
+
 
     public bool IsAnonymous => ReviewerUserId is null;
 
@@ -33,7 +38,23 @@ public sealed class Review : GuidEntity
             Status = ReviewStatus.Pending,
         };
     }
+    public void Approve(Guid moderatorUserId)
+    {
+        Status = ReviewStatus.Approved;
+        ApprovedByUserId = moderatorUserId;
+        ApprovedAtUtc = DateTime.UtcNow;
+    }
 
-    public void Approve() => Status = ReviewStatus.Approved;
-    public void Reject() => Status = ReviewStatus.Rejected;
+    public void Reject(Guid moderatorUserId)
+    {
+        Status = ReviewStatus.Rejected;
+        RejectedByUserId = moderatorUserId;
+        RejectedAtUtc = DateTime.UtcNow;
+    }
+
+    public void DeleteBy(Guid? deletedByUserId)
+    {
+        DeletedByUserId = deletedByUserId;
+        Delete();
+    }
 }

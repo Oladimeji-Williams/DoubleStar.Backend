@@ -8,15 +8,15 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 using DoubleStar.SharedKernel.Abstractions.Authentication;
-using DoubleStar.SharedKernel.Abstractions.Security;
 
 using DoubleStar.BuildingBlocks.Infrastructure.Auditing;
 
 using DoubleStar.Modules.Identity.Infrastructure.Identity;
-using DoubleStar.Modules.Identity.Infrastructure.Security;
 using DoubleStar.Modules.Identity.Infrastructure.Tokens;
 using DoubleStar.Modules.Identity.Persistence;
+using DoubleStar.Modules.Identity.Application.Abstractions;
 using DoubleStar.Modules.Identity.Infrastructure.Turnstile;
+
 
 namespace DoubleStar.Modules.Identity;
 
@@ -55,9 +55,7 @@ public static class DependencyInjection
         services.AddScoped<ITokenService, JwtTokenService>();
         // wherever AddIdentityModule registers services — add these two lines
         services.AddOptions<TurnstileOptions>().BindConfiguration(TurnstileOptions.SectionName);
-        services.AddHttpClient<ITurnstileVerifier, TurnstileVerifier>();
-        // Human verification
-        services.AddScoped<IHumanVerificationService, HumanVerificationService>();
+        services.AddHttpClient<IHumanVerifier, TurnstileVerifier>();
 
         services
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

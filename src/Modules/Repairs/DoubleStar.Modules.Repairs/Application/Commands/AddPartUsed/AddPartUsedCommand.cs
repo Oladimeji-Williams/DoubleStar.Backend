@@ -1,4 +1,3 @@
-// Application/Commands/AddPartUsedCommand/AddPartUsedCommand.cs
 using DoubleStar.Modules.Repairs.Application.DTOs;
 
 namespace DoubleStar.Modules.Repairs.Application.Commands.AddPartUsedCommand;

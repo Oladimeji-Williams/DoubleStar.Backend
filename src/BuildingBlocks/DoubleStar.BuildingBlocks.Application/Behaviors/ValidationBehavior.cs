@@ -1,4 +1,3 @@
-// Behaviors/ValidationBehavior.cs
 using FluentValidation;
 using MediatR;
 using DoubleStar.SharedKernel.Common.Primitives;

@@ -1,4 +1,3 @@
-// Application/Queries/GetTicketsByStatusQuery/GetTicketsByStatusQuery.cs
 using DoubleStar.SharedKernel.Contracts.Repairs;
 using DoubleStar.Modules.Repairs.Application.DTOs;
 
